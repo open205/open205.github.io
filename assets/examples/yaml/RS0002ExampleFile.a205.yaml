@@ -50,7 +50,7 @@ ASHRAE205:
             - 0.641
             - 0.659
             - 0.7
-            - 1
+            - 1.0
             - 1.08
             outdoor_coil_entering_dry_bulb_temperature:
             - 297.05

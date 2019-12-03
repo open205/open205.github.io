@@ -95,7 +95,7 @@ ASHRAE205:
             - 0.7
             - 0.8
             - 0.9
-            - 1
+            - 1.0
           lookup_variables:
             condenser_liquid_differential_pressure: []
             condenser_liquid_leaving_temperature: []

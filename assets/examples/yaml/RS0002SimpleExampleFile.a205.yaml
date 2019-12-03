@@ -31,7 +31,7 @@ ASHRAE205:
             - 292.55
             indoor_coil_volumetric_flow_ratio:
             - 0.72
-            - 1
+            - 1.0
             outdoor_coil_entering_dry_bulb_temperature:
             - 302.55
             - 308.15
