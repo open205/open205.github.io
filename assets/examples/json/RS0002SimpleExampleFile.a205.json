@@ -43,7 +43,7 @@
                             ],
                             "indoor_coil_volumetric_flow_ratio": [
                                 0.72,
-                                1
+                                1.0
                             ],
                             "compressor_sequence_number": [
                                 1

@@ -16,7 +16,7 @@
                         "model_number": "F060",
                         "has_motor": true,
                         "enclosed": true,
-                        "impeller_type": "CENTRIFIGUL_FORWARD_CURVED",
+                        "impeller_type": "CENTRIFUGAL_FORWARD_CURVED",
                         "direct_drive_impeller": true,
                         "number_of_impellers": 1
                     },
@@ -36,7 +36,8 @@
                     "wet_coil_pressure_drop": 24.8,
                     "motor_heat_fraction": 1,
                     "standby_power": 8,
-                    "fan_operation_type": "DISCRETE",
+                    "performance_map_type": "DISCRETE",
+                    "speed_control_type": "VARIABLE",
                     "performance_map": {
                         "grid_variables": {
                             "speed_number": [
