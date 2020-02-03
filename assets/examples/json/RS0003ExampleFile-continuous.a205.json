@@ -1,12 +1,14 @@
 {
     "ASHRAE205": {
+        "standard_version": "PPR2",
         "schema_version": "0.1.0",
         "RS_ID": "RS0003",
+        "description": "Fan Assembly",
         "ID": "bcf8b859-67a3-42f4-8f8d-4e57af1ccf22",
         "data_timestamp": "2019-09-13T00:00Z",
-        "data_version": "A205DV-1",
-        "description": "Fan Assembly",
+        "data_version": 1,
         "data_source": "FanSelect",
+        "disclaimer": "Example File - not for use in simulation",
         "notes": "This is a JSON version of the sample RS0003 file. Power is shaft power.",
         "RS_instance": {
             "RS0003": {
@@ -39,16 +41,19 @@
                     "nominal_volumetric_air_flow_rate": 2.83,
                     "wet_coil_pressure_drop": 50,
                     "motor_heat_fraction": 1,
+                    "maximum_power": 9999999,
+                    "maximum_impeller_speed": 99999999,
+                    "minimum_impeller_speed": 0,
                     "standby_power": 0,
                     "performance_map_type": "CONTINUOUS",
                     "speed_control_type": "VARIABLE",
                     "performance_map": {
                         "grid_variables": {
-                            "impeller_speed": [],
+                            "volumetric_air_flow_rate": [],
                             "static_pressure_difference": []
                         },
                         "lookup_variables": {
-                            "volumetric_air_flow_rate": [],
+                            "impeller_speed": [],
                             "input_power": []
                         }
                     }
