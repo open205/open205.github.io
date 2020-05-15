@@ -5,6 +5,8 @@
 	<title>ASHRAE Standard 205 Resource Files</title>
 	<link rel="stylesheet" type="text/css" href="https://www.ashrae.org/Style%20Library/css/main.css">
 	<link rel="stylesheet" type="text/css" href="assets/styles/style.css">
+	<link rel="stylesheet" type="text/css" href="assets/styles/bootstrap-grid.min.css">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
 </head>
 
 <body>
@@ -51,75 +53,136 @@
 				<h2>XLSX Templates</h2>
 				<hr>
 
-				
-				<div class="row">
-				<div class="column lg-12">
-					<h3 class="featureBlock-subHeading" style="margin-top: 6.5px;">RS0001</h3>
-					<p>Water Cooled Chiller</p>
-				</div>
-					<div class="column lg-8" style="margin: auto;">
-						<a class="btn btn--hexagon-secondary" href="assets/templates/RS0002-discrete-fan-template.a205.xlsx">Download</a>
-					</div>
-				</div>
-				
-				<div class="row">
-				<div class="column lg-12">
-					<h3 class="featureBlock-subHeading" style="margin-top: 6.5px;">RS0002</h3>
-					<p>Unitary System with Discrete Fan</p>
-				</div>
-					<div class="column lg-8" style="margin: auto;">
-						<a class="btn btn--hexagon-secondary" href="assets/templates/RS0003-discrete-template.a205.xlsx">Download</a>
-					</div>
-				</div>
-				
-				<div class="row">
-				<div class="column lg-12">
-					<h3 class="featureBlock-subHeading" style="margin-top: 6.5px;">RS0002</h3>
-					<p>Unitary System with Continuous Fan</p>
-				</div>
-					<div class="column lg-8" style="margin: auto;">
-						<a class="btn btn--hexagon-secondary" href="assets/templates/RS0004-template.a205.xlsx">Download</a>
-					</div>
-				</div>
-				
-				<div class="row">
-				<div class="column lg-12">
-					<h3 class="featureBlock-subHeading" style="margin-top: 6.5px;">RS0003</h3>
-					<p>Continuous Fan Assembly</p>
-				</div>
-					<div class="column lg-8" style="margin: auto;">
-						<a class="btn btn--hexagon-secondary" href="assets/templates/RS0003-continuous-template.a205.xlsx">Download</a>
-					</div>
-				</div>
-				
-				<div class="row">
-				<div class="column lg-12">
-					<h3 class="featureBlock-subHeading" style="margin-top: 6.5px;">RS0003</h3>
-					<p>Discrete Fan Assembly</p>
-				</div>
-					<div class="column lg-8" style="margin: auto;">
-						<a class="btn btn--hexagon-secondary" href="assets/templates/RS0002-continuous-fan-template.a205.xlsx">Download</a>
-					</div>
-				</div>
-				
-				<div class="row">
-				<div class="column lg-12">
-					<h3 class="featureBlock-subHeading" style="margin-top: 6.5px;">RS0004</h3>
-					<p>DX Coil System</p>
-				</div>
-					<div class="column lg-8" style="margin: auto;">
-						<a class="btn btn--hexagon-secondary" href="assets/templates/RS0001-template.a205.xlsx">Download</a>
-					</div>
-				</div>
-				
-
-				<div class="row">
-					<!-- This must be here to even out the rows -->
-				</div>
+				<ul class="accordion">
+					
+					<li class="is-active">
+						<span id="RS" class="">RS0001 : Liquid-Cooled Chiller</span>
+						
+						<div class="accordion-content">
+							<div style="display: flex; justify-content: space-around; padding-top: 20px" class="row">
+								<div class="col-sm">
+									<h3><a id="personal"></a>Liquid-Cooled Chiller</h3>
+								</div>
+								<div class="col-sm">
+									<a class="btn btn--hexagon-secondary" href="assets/templates/RS0001-template.a205.xlsx">Download</a>
+								</div>
+							</div>
+						</div>
+						
+					</li>
+					
+					<li class="is-active">
+						<span id="RS" class="">RS0002 : Unitary Cooling Air-Conditioning Equipment</span>
+						
+						<div class="accordion-content">
+							<div style="display: flex; justify-content: space-around; padding-top: 20px" class="row">
+								<div class="col-sm">
+									<h3><a id="personal"></a>Unitary System with Continuous Fan</h3>
+								</div>
+								<div class="col-sm">
+									<a class="btn btn--hexagon-secondary" href="assets/templates/RS0002-continuous-fan-template.a205.xlsx">Download</a>
+								</div>
+							</div>
+						</div>
+						
+						<div class="accordion-content">
+							<div style="display: flex; justify-content: space-around; padding-top: 20px" class="row">
+								<div class="col-sm">
+									<h3><a id="personal"></a>Unitary System with Discrete Fan</h3>
+								</div>
+								<div class="col-sm">
+									<a class="btn btn--hexagon-secondary" href="assets/templates/RS0002-discrete-fan-template.a205.xlsx">Download</a>
+								</div>
+							</div>
+						</div>
+						
+					</li>
+					
+					<li class="is-active">
+						<span id="RS" class="">RS0003 : Fan Assembly</span>
+						
+						<div class="accordion-content">
+							<div style="display: flex; justify-content: space-around; padding-top: 20px" class="row">
+								<div class="col-sm">
+									<h3><a id="personal"></a>Continuous Fan Assembly</h3>
+								</div>
+								<div class="col-sm">
+									<a class="btn btn--hexagon-secondary" href="assets/templates/RS0003-continuous-template.a205.xlsx">Download</a>
+								</div>
+							</div>
+						</div>
+						
+						<div class="accordion-content">
+							<div style="display: flex; justify-content: space-around; padding-top: 20px" class="row">
+								<div class="col-sm">
+									<h3><a id="personal"></a>Discrete Fan Assembly</h3>
+								</div>
+								<div class="col-sm">
+									<a class="btn btn--hexagon-secondary" href="assets/templates/RS0003-discrete-template.a205.xlsx">Download</a>
+								</div>
+							</div>
+						</div>
+						
+					</li>
+					
+					<li class="is-active">
+						<span id="RS" class="">RS0004 : Air-to-Air Direct Expansion Refrigerant Coil System</span>
+						
+						<div class="accordion-content">
+							<div style="display: flex; justify-content: space-around; padding-top: 20px" class="row">
+								<div class="col-sm">
+									<h3><a id="personal"></a>Air-to-Air Direct Expansion Refrigerant Coil System</h3>
+								</div>
+								<div class="col-sm">
+									<a class="btn btn--hexagon-secondary" href="assets/templates/RS0004-template.a205.xlsx">Download</a>
+								</div>
+							</div>
+						</div>
+						
+					</li>
+					
+					<li class="is-active">
+						<span id="RS" class="">RS0005 : Motor</span>
+						
+						<div class="accordion-content">
+							<div style="display: flex; justify-content: space-around; padding-top: 20px" class="row">
+								<div class="col-sm">
+									<h3><a id="personal"></a>Motor</h3>
+								</div>
+								<div class="col-sm">
+									<a class="btn btn--hexagon-secondary" href="assets/templates/RS0005-template.a205.xlsx">Download</a>
+								</div>
+							</div>
+						</div>
+						
+					</li>
+					
+					<li class="is-active">
+						<span id="RS" class="">RS0006 : Electronic Motor Drive</span>
+						
+						<div class="accordion-content">
+							<div style="display: flex; justify-content: space-around; padding-top: 20px" class="row">
+								<div class="col-sm">
+									<h3><a id="personal"></a>Electronic Motor Drive</h3>
+								</div>
+								<div class="col-sm">
+									<a class="btn btn--hexagon-secondary" href="assets/templates/RS0006-template.a205.xlsx">Download</a>
+								</div>
+							</div>
+						</div>
+						
+					</li>
+					
+				</ul>
 
 			</div>
 		</div>
 	</div>
+	<script>
+		$('li').click(function(){
+			$(this).toggleClass("is-active");
+		});
+	</script>
 
 	</div>
 </body>
