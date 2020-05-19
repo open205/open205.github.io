@@ -5,93 +5,135 @@
 	<title>ASHRAE Standard 205 Resource Files</title>
 	<link rel="stylesheet" type="text/css" href="https://www.ashrae.org/Style%20Library/css/main.css">
 	<link rel="stylesheet" type="text/css" href="assets/styles/style.css">
+	<link rel="stylesheet" type="text/css" href="assets/styles/bootstrap-grid.min.css">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
 </head>
 
 <body>
+	<div class="pageWrap">
+	    <header class="headerMain">
+    <div class="headerMain-util">
+        <div class="logoMain">
+            <a href="https://www.ashrae.org/">
+                <img src="assets/public/logo_ashrae.png">
+            </a>
+            <h1>ASHRAE Standard 205P Resource Files</h1>
+        </div>
+    </div>
+    <div class="headerMain-main">
+        <div>
+            <div class="headerMain-mainZone02"></div>
+            <nav id="navMain" class="navMain">
+                <ul>
+                    <li class="ismega">
+                        <a  href="index.html">About</a>
+                    </li>
+                    <li class="ismega">
+                        <a class="selected" href="schema.html">JSON Schema (Normative)</a>
+                    </li>
+                    <li class="ismega">
+                        <a  href="examples.html">Example Files</a>
+                    </li>
+                    <li class="ismega">
+                        <a  href="templates.html">XLSX Templates</a>
+                    </li>
+                    <li class="ismega">
+                        <a  href="tk205.html">Toolkit 205</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
 
-<div class="pageWrap">
-
-	<header class="headerMain">
-		<div class="headerMain-util">
-			<div class="logoMain">
-				<a href="index.html">
-					<img src="assets/logo_ashrae.png">
-				</a>
-				<h1>ASHRAE Standard 205P Resource Files</h1>
-			</div>
-		</div>
-		<div class="headerMain-main">
-			<div> <!-- <div class="headerMain-mainInner">  -->
-				<div class="headerMain-mainZone02"></div>
-				<nav id="navMain" class="navMain">
-					<ul>
-						<li class="ismega">
-							<a href="schema.html">JSON Schema (Normative)</a> 		<!-- style="font-size: 14px" -->
-						</li>
-						<li class="ismega">
-							<a href="examples.html">Example Files</a>
-						</li>
-						<li class="ismega">
-							<a href="templates.html">XLSX Templates</a>
-						</li>
-						<li class="ismega">
-							<a href="https://github.com/open205/toolkit-205">Toolkit 205</a>
-						</li>
-					</ul>
-				</nav>
-			</div>
-		</div>
-	</header>
-
-
-	<div class="main">
+<div class="main">
 		<div class="section">
 			<div class="contained">
+
 				<h2>JSON Schema (Normative)</h2>
 				<hr>
+
+
 				<div class="row">
-					<div class="column lg-12">
-						<h3 class="featureBlock-subHeading" style="margin-top: 6.5px;">ASHRAE205</h3>
+				<div class="column lg-12">
+					<h3 class="featureBlock-subHeading" style="margin-top: 6.5px;">ASHRAE 205</h3>
+					<p>Base schema for ASHRAE 205 representations</p>
+				</div>
+					<div class="column lg-8" style="margin: auto;">
+						<a class="btn btn--hexagon-secondary" href="assets/schema/ASHRAE205.schema.json">Download</a>
 					</div>
-							<div class="column lg-8" style="margin: auto;">
-								<a class="btn btn--hexagon-secondary" href="assets/schema/ASHRAE205.schema.json">Download</a>
-							</div>
 				</div>
 
 				<div class="row">
-					<div class="column lg-12">
-						<h3 class="featureBlock-subHeading" style="margin-top: 6.5px;">RS0001: Liquid-Cooled Chillers</h3>
-					</div>
+				<div class="column lg-12">
+					<h3 class="featureBlock-subHeading" style="margin-top: 6.5px;">RS0001: Liquid-Cooled Chiller</h3>
+					<p>Schema for ASHRAE 205 annex RS0001: Liquid-Cooled Chiller</p>
+				</div>
 					<div class="column lg-8" style="margin: auto;">
 						<a class="btn btn--hexagon-secondary" href="assets/schema/RS0001.schema.json">Download</a>
 					</div>
 				</div>
 
 				<div class="row">
-					<div class="column lg-12">
-						<h3 class="featureBlock-subHeading" style="margin-top: 6.5px;">RS0002: Unitary Cooling Air-Conditioning Equipment</h3>
-					</div>
+				<div class="column lg-12">
+					<h3 class="featureBlock-subHeading" style="margin-top: 6.5px;">RS0002: Unitary Cooling Air-Conditioning Equipment</h3>
+					<p>Schema for ASHRAE 205 annex RS0002: Unitary Cooling Air-Conditioning Equipment</p>
+				</div>
 					<div class="column lg-8" style="margin: auto;">
 						<a class="btn btn--hexagon-secondary" href="assets/schema/RS0002.schema.json">Download</a>
 					</div>
 				</div>
 
 				<div class="row">
-					<div class="column lg-12" >
-						<h3 class="featureBlock-subHeading" style="margin-top: 6.5px;">RS0003: Fan Assembly</h3>
-					</div>
+				<div class="column lg-12">
+					<h3 class="featureBlock-subHeading" style="margin-top: 6.5px;">RS0003: Fan Assembly</h3>
+					<p>Schema for ASHRAE 205 annex RS0003: Fan Assembly</p>
+				</div>
 					<div class="column lg-8" style="margin: auto;">
 						<a class="btn btn--hexagon-secondary" href="assets/schema/RS0003.schema.json">Download</a>
 					</div>
 				</div>
 
 				<div class="row">
-					<!-- This must be here to even out the rows -->
+				<div class="column lg-12">
+					<h3 class="featureBlock-subHeading" style="margin-top: 6.5px;">RS0004: Air-to-Air Direct Expansion Refrigerant Coil System</h3>
+					<p>Schema for ASHRAE 205 annex RS0004: Air-to-Air Direct Expansion Refrigerant Coil System</p>
+				</div>
+					<div class="column lg-8" style="margin: auto;">
+						<a class="btn btn--hexagon-secondary" href="assets/schema/RS0004.schema.json">Download</a>
+					</div>
 				</div>
 
+				<div class="row">
+				<div class="column lg-12">
+					<h3 class="featureBlock-subHeading" style="margin-top: 6.5px;">RS0005: Motor</h3>
+					<p>Schema for ASHRAE 205 annex RS0005: Motor</p>
+				</div>
+					<div class="column lg-8" style="margin: auto;">
+						<a class="btn btn--hexagon-secondary" href="assets/schema/RS0005.schema.json">Download</a>
+					</div>
+				</div>
+
+				<div class="row">
+				<div class="column lg-12">
+					<h3 class="featureBlock-subHeading" style="margin-top: 6.5px;">RS0006: Electronic Motor Drive</h3>
+					<p>Schema for ASHRAE 205 annex RS0006: Electronic Motor Drive</p>
+				</div>
+					<div class="column lg-8" style="margin: auto;">
+						<a class="btn btn--hexagon-secondary" href="assets/schema/RS0006.schema.json">Download</a>
+					</div>
+				</div>
+
+				<div class="row">
+					<!-- This must be here to even out the rows -->
+				</div>
+				<hr>
+				<div class="footer"><p>Generated: 2020-05-19 08:00:27.905162+00:00</p></div>
 			</div>
 		</div>
 	</div>
 
-</div> <!-- end pageWrap -->
+	</div>
+</body>
+
 </html>

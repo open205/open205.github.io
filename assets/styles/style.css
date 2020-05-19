@@ -2,4 +2,11 @@ a.selected{
 	background: #70af16;
 }
 
+.footer {
+	font-size: 12px;
+}
+
+#RS {
+	font-size: 18px;
+  }
 /*vertical-align: middle;*/

@@ -5,83 +5,186 @@
 	<title>ASHRAE Standard 205 Resource Files</title>
 	<link rel="stylesheet" type="text/css" href="https://www.ashrae.org/Style%20Library/css/main.css">
 	<link rel="stylesheet" type="text/css" href="assets/styles/style.css">
+	<link rel="stylesheet" type="text/css" href="assets/styles/bootstrap-grid.min.css">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
 </head>
 
 <body>
+	<div class="pageWrap">
+	    <header class="headerMain">
+    <div class="headerMain-util">
+        <div class="logoMain">
+            <a href="https://www.ashrae.org/">
+                <img src="assets/public/logo_ashrae.png">
+            </a>
+            <h1>ASHRAE Standard 205P Resource Files</h1>
+        </div>
+    </div>
+    <div class="headerMain-main">
+        <div>
+            <div class="headerMain-mainZone02"></div>
+            <nav id="navMain" class="navMain">
+                <ul>
+                    <li class="ismega">
+                        <a  href="index.html">About</a>
+                    </li>
+                    <li class="ismega">
+                        <a  href="schema.html">JSON Schema (Normative)</a>
+                    </li>
+                    <li class="ismega">
+                        <a  href="examples.html">Example Files</a>
+                    </li>
+                    <li class="ismega">
+                        <a class="selected" href="templates.html">XLSX Templates</a>
+                    </li>
+                    <li class="ismega">
+                        <a  href="tk205.html">Toolkit 205</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
 
-<div class="pageWrap">
-	<header class="headerMain">
-		<div class="headerMain-util">
-			<div class="logoMain">
-				<a href="index.html">
-					<img src="assets/logo_ashrae.png">
-				</a>
-				<h1>ASHRAE Standard 205P Resource Files</h1>
-			</div>
-		</div>
-		<div class="headerMain-main">
-			<div> <!-- <div class="headerMain-mainInner">  -->
-				<div class="headerMain-mainZone02"></div>
-				<nav id="navMain" class="navMain">
-					<ul>
-						<li class="ismega">
-							<a href="schema.html">JSON Schema (Normative)</a> 		<!-- style="font-size: 14px" -->
-						</li>
-						<li class="ismega">
-							<a href="examples.html">Example Files</a>
-						</li>
-						<li class="ismega">
-							<a href="templates.html">XLSX Templates</a>
-						</li>
-						<li class="ismega">
-							<a href="https://github.com/open205/toolkit-205">Toolkit 205</a>
-						</li>
-					</ul>
-				</nav>
-			</div>
-		</div>
-	</header>
-
-	<div class="main">
+<div class="main">
 		<div class="section">
 			<div class="contained">
 				<h2>XLSX Templates</h2>
 				<hr>
+				<ul class="accordion">
 
-				<div class="row">
-					<div class="column lg-12">
-						<h3 class="featureBlock-subHeading" style="margin-top: 6.5px;">RS0001: Liquid-Cooled Chillers</h3>
-					</div>
-					<div class="column lg-8" style="margin: auto;">
-						<a class="btn btn--hexagon-secondary" href="assets/templates/RS0001-template.a205.xlsx">Download</a>
-					</div>
-				</div>
+					<li class="is-active">
+						<span id="RS" class="">RS0001: Liquid-Cooled Chiller</span>
 
-				<div class="row">
-					<div class="column lg-12">
-						<h3 class="featureBlock-subHeading" style="margin-top: 6.5px;">RS0002: Unitary Cooling Air-Conditioning Equipment</h3>
-					</div>
-					<div class="column lg-8" style="margin: auto;">
-						<a class="btn btn--hexagon-secondary" href="assets/templates/RS0002-template.a205.xlsx">Download</a>
-					</div>
-				</div>
+						<div class="accordion-content">
+							<div style="display: flex; justify-content: space-around; padding-top: 20px" class="row">
+								<div class="col-md-8">
+									<h4><a id="personal"></a>Liquid-Cooled Chiller</h4>
+								</div>
+								<div class="col-md-4">
+									<a class="btn btn--hexagon-secondary" href="assets/templates/RS0001-template.a205.xlsx">Download</a>
+								</div>
+							</div>
+						</div>
 
-				<div class="row">
-					<div class="column lg-12" >
-						<h3 class="featureBlock-subHeading" style="margin-top: 6.5px;">RS0003: Fan Assembly</h3>
-					</div>
-					<div class="column lg-8" style="margin: auto;">
-						<a class="btn btn--hexagon-secondary" href="assets/templates/RS0003-template.a205.xlsx">Download</a>
-					</div>
-				</div>
+					</li>
 
-				<div class="row">
-					<!-- This must be here to even out the rows -->
-				</div>
+					<li class="is-active">
+						<span id="RS" class="">RS0002: Unitary Cooling Air-Conditioning Equipment</span>
 
+						<div class="accordion-content">
+							<div style="display: flex; justify-content: space-around; padding-top: 20px" class="row">
+								<div class="col-md-8">
+									<h4><a id="personal"></a>Unitary System with Continuous Fan</h4>
+								</div>
+								<div class="col-md-4">
+									<a class="btn btn--hexagon-secondary" href="assets/templates/RS0002-continuous-fan-template.a205.xlsx">Download</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="accordion-content">
+							<div style="display: flex; justify-content: space-around; padding-top: 20px" class="row">
+								<div class="col-md-8">
+									<h4><a id="personal"></a>Unitary System with Discrete Fan</h4>
+								</div>
+								<div class="col-md-4">
+									<a class="btn btn--hexagon-secondary" href="assets/templates/RS0002-continuous-fan-template.a205.xlsx">Download</a>
+								</div>
+							</div>
+						</div>
+
+					</li>
+
+					<li class="is-active">
+						<span id="RS" class="">RS0003: Fan Assembly</span>
+
+						<div class="accordion-content">
+							<div style="display: flex; justify-content: space-around; padding-top: 20px" class="row">
+								<div class="col-md-8">
+									<h4><a id="personal"></a>Continuous Fan Assembly</h4>
+								</div>
+								<div class="col-md-4">
+									<a class="btn btn--hexagon-secondary" href="assets/templates/RS0002-discrete-fan-template.a205.xlsx">Download</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="accordion-content">
+							<div style="display: flex; justify-content: space-around; padding-top: 20px" class="row">
+								<div class="col-md-8">
+									<h4><a id="personal"></a>Discrete Fan Assembly</h4>
+								</div>
+								<div class="col-md-4">
+									<a class="btn btn--hexagon-secondary" href="assets/templates/RS0002-discrete-fan-template.a205.xlsx">Download</a>
+								</div>
+							</div>
+						</div>
+
+					</li>
+
+					<li class="is-active">
+						<span id="RS" class="">RS0004: Air-to-Air Direct Expansion Refrigerant Coil System</span>
+
+						<div class="accordion-content">
+							<div style="display: flex; justify-content: space-around; padding-top: 20px" class="row">
+								<div class="col-md-8">
+									<h4><a id="personal"></a>Air-to-Air Direct Expansion Refrigerant Coil System</h4>
+								</div>
+								<div class="col-md-4">
+									<a class="btn btn--hexagon-secondary" href="assets/templates/RS0003-continuous-template.a205.xlsx">Download</a>
+								</div>
+							</div>
+						</div>
+
+					</li>
+
+					<li class="is-active">
+						<span id="RS" class="">RS0005: Motor</span>
+
+						<div class="accordion-content">
+							<div style="display: flex; justify-content: space-around; padding-top: 20px" class="row">
+								<div class="col-md-8">
+									<h4><a id="personal"></a>Motor</h4>
+								</div>
+								<div class="col-md-4">
+									<a class="btn btn--hexagon-secondary" href="assets/templates/RS0003-discrete-template.a205.xlsx">Download</a>
+								</div>
+							</div>
+						</div>
+
+					</li>
+
+					<li class="is-active">
+						<span id="RS" class="">RS0006: Electronic Motor Drive</span>
+
+						<div class="accordion-content">
+							<div style="display: flex; justify-content: space-around; padding-top: 20px" class="row">
+								<div class="col-md-8">
+									<h4><a id="personal"></a>Electronic Motor Drive</h4>
+								</div>
+								<div class="col-md-4">
+									<a class="btn btn--hexagon-secondary" href="assets/templates/RS0004-template.a205.xlsx">Download</a>
+								</div>
+							</div>
+						</div>
+
+					</li>
+
+				</ul>
+				<hr>
+				<div class="footer"><p>Generated: 2020-05-19 08:00:27.919653+00:00</p></div>
 			</div>
 		</div>
-	</div>
 
-</div> <!-- end pageWrap -->
+	</div>
+	<script>
+		$('li').click(function(){
+			$(this).toggleClass("is-active");
+		});
+	</script>
+
+	</div>
+</body>
+
 </html>

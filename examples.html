@@ -5,131 +5,316 @@
 	<title>ASHRAE Standard 205 Resource Files</title>
 	<link rel="stylesheet" type="text/css" href="https://www.ashrae.org/Style%20Library/css/main.css">
 	<link rel="stylesheet" type="text/css" href="assets/styles/style.css">
+	<link rel="stylesheet" type="text/css" href="assets/styles/bootstrap-grid.min.css">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
 </head>
 
 <body>
+	<div class="pageWrap">
+	    <header class="headerMain">
+    <div class="headerMain-util">
+        <div class="logoMain">
+            <a href="https://www.ashrae.org/">
+                <img src="assets/public/logo_ashrae.png">
+            </a>
+            <h1>ASHRAE Standard 205P Resource Files</h1>
+        </div>
+    </div>
+    <div class="headerMain-main">
+        <div>
+            <div class="headerMain-mainZone02"></div>
+            <nav id="navMain" class="navMain">
+                <ul>
+                    <li class="ismega">
+                        <a  href="index.html">About</a>
+                    </li>
+                    <li class="ismega">
+                        <a  href="schema.html">JSON Schema (Normative)</a>
+                    </li>
+                    <li class="ismega">
+                        <a class="selected" href="examples.html">Example Files</a>
+                    </li>
+                    <li class="ismega">
+                        <a  href="templates.html">XLSX Templates</a>
+                    </li>
+                    <li class="ismega">
+                        <a  href="tk205.html">Toolkit 205</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
 
-<div class="pageWrap">
+<div class="main">
+	<div class="section">
+		<div class="contained">
+			<h2>Example Files</h2>
+			<hr>
+			<ul class="accordion">
 
-	<header class="headerMain">
-		<div class="headerMain-util">
-			<div class="logoMain">
-				<a href="index.html">
-					<img src="assets/logo_ashrae.png">
-				</a>
-				<h1>ASHRAE Standard 205P Resource Files</h1>
-			</div>
-		</div>
-		<div class="headerMain-main">
-			<div> <!-- <div class="headerMain-mainInner">  -->
-				<div class="headerMain-mainZone02"></div>
-				<nav id="navMain" class="navMain">
-					<ul>
-						<li class="ismega">
-							<a href="schema.html">JSON Schema (Normative)</a> 		<!-- style="font-size: 14px" -->
-						</li>
-						<li class="ismega">
-							<a href="examples.html">Example Files</a>
-						</li>
-						<li class="ismega">
-							<a href="templates.html">XLSX Templates</a>
-						</li>
-						<li class="ismega">
-							<a href="https://github.com/open205/toolkit-205">Toolkit 205</a>
-						</li>
-					</ul>
-				</nav>
-			</div>
-		</div>
-	</header>
+				<li class="is-active">
+					<span id="RS" >RS0002: Unitary Cooling Air-Conditioning Equipment</span>
+						<div class="accordion-content">
+							<div style="display: flex; justify-content: space-around; padding-top: 20px" class="row">
+								<div class="col-md-4">
+									<h4><a id="personal"></a>Simple Example File :
 
+									</h4>
+								</div>
 
-	<div class="main">
-		<div class="section">
-			<div class="contained">
+								<div class="col-md-2">
+									<a class="btn btn--hexagon-secondary" href="assets/examples/
 
-				<h2>Example Files</h2>
-				<hr>
+									cbor
 
-				<div class="row">
-					<div class="column lg-12">
-						<h3 class="featureBlock-subHeading" style="margin-top: 6.5px;">RS0001: Liquid-Cooled Chillers</h3>
-					</div>
-					<div class="column lg-2" style="margin: auto;">
-						<a class="btn btn--hexagon-secondary" href="assets/examples/cbor/RS0001ExampleFile.a205.cbor">CBOR</a>
-					</div>
-					<div class="column lg-2" style="margin: auto;">
-						<a class="btn btn--hexagon-secondary" href="assets/examples/xlsx/RS0001ExampleFile.xlsx">XLSX</a>
-					</div>
-					<div class="column lg-2" style="margin: auto;">
-						<a class="btn btn--hexagon-secondary" href="assets/examples/json/RS0001ExampleFile.json">JSON</a>
-					</div>
-					<div class="column lg-2" style="margin: auto;">
-						<a class="btn btn--hexagon-secondary" href="assets/examples/yaml/RS0001ExampleFile.yaml/RS0001ExampleFile.a205.yaml">YAML</a>
-					</div>
-				</div>
+									/RS0002SimpleExampleFile.a205.cbor">
 
-				<div class="row">
-					<div class="column lg-12">
-						<h3 class="featureBlock-subHeading" style="margin-top: 6.5px;">RS0002: Unitary Cooling Air-Conditioning Equipment</h3>
-					</div>
-					<div class="column lg-2" style="margin: auto;">
-						<a class="btn btn--hexagon-secondary" href="assets/examples/cbor/RS0002ExampleFile.a205.cbor">CBOR</a>
-					</div>
-					 <div class="column lg-2" style="margin: auto;">
-						<a class="btn btn--hexagon-secondary" href="assets/examples/xlsx/RS0002ExampleFile.xlsx">XLSX</a>
-					</div>
-					<div class="column lg-2" style="margin: auto;">
-						<a class="btn btn--hexagon-secondary" href="assets/examples/json/RS0002ExampleFile.json">JSON</a>
-					</div>
-					<div class="column lg-2" style="margin: auto;">
-						<a class="btn btn--hexagon-secondary" href="assets/examples/yaml/RS0002ExampleFile.a205.yaml">YAML</a>
-					</div>
-				</div>
+										cbor
 
-				<div class="row">
-					<div class="column lg-12" >
-						<h3 class="featureBlock-subHeading" style="margin-top: 6.5px;">RS0003: Fan Assembly - Discrete</h3>
-					</div>
-					<div class="column lg-2" style="margin: auto;">
-						<a class="btn btn--hexagon-secondary" href="assets/examples/cbor/RS0003ExampleFile-discrete.a205.cbor">CBOR</a>
-					</div>
-					<div class="column lg-2" style="margin: auto;">
-						<a class="btn btn--hexagon-secondary" href="assets/examples/xlsx/RS0003ExampleFile-discrete.xlsx">XLSX</a>
-					</div>
-					<div class="column lg-2" style="margin: auto;">
-						<a class="btn btn--hexagon-secondary" href="assets/examples/json/RS0003ExampleFile-discrete.json">JSON</a>
-					</div>
-					<div class="column lg-2" style="margin: auto;">
-						<a class="btn btn--hexagon-secondary" href="assets/examples/yaml/RS0003ExampleFile-discrete.a205.yaml">YAML</a>
-					</div>
-				</div>
+									</a>
+								</div>
 
-				<div class="row">
-					<div class="column lg-12" >
-						<h3 class="featureBlock-subHeading" style="margin-top: 6.5px;">RS0003: Fan Assembly - Continuous</h3>
-					</div>
-					<div class="column lg-2" style="margin: auto;">
-						<a class="btn btn--hexagon-secondary" href="assets/examples/cbor/RS0003ExampleFile-continuous.a205.cbor">CBOR</a>
-					</div>
-					<div class="column lg-2" style="margin: auto;">
-						<a class="btn btn--hexagon-secondary" href="assets/examples/xlsx/RS0003ExampleFile-continuous.xlsx">XLSX</a>
-					</div>
-					<div class="column lg-2" style="margin: auto;">
-						<a class="btn btn--hexagon-secondary" href="assets/examples/json/RS0003ExampleFile-continuous.json">JSON</a>
-					</div>
-					<div class="column lg-2" style="margin: auto;">
-						<a class="btn btn--hexagon-secondary" href="assets/examples/yaml/RS0003ExampleFile-continuous.a205.yaml">YAML</a>
-					</div>
-				</div>
+								<div class="col-md-2">
+									<a class="btn btn--hexagon-secondary" href="assets/examples/
 
-				<div class="row">
-					<!-- This must be here to even out the rows -->
-				</div>
+									xlsx
 
-			</div>
+									/RS0002SimpleExampleFile.a205.xlsx">
+
+										xlsx
+
+									</a>
+								</div>
+
+								<div class="col-md-2">
+									<a class="btn btn--hexagon-secondary" href="assets/examples/
+
+									json
+
+									/RS0002SimpleExampleFile.a205.json">
+
+										json
+
+									</a>
+								</div>
+
+								<div class="col-md-2">
+									<a class="btn btn--hexagon-secondary" href="assets/examples/
+
+									yaml
+
+									/RS0002SimpleExampleFile.a205.yaml">
+
+										yaml
+
+									</a>
+								</div>
+
+							</div>
+						</div>
+					</li>
+
+				<li class="is-active">
+					<span id="RS" >RS0004: Air-to-Air Direct Expansion Refrigerant Coil System</span>
+						<div class="accordion-content">
+							<div style="display: flex; justify-content: space-around; padding-top: 20px" class="row">
+								<div class="col-md-4">
+									<h4><a id="personal"></a>Simple Example File :
+
+									</h4>
+								</div>
+
+								<div class="col-md-2">
+									<a class="btn btn--hexagon-secondary" href="assets/examples/
+
+									cbor
+
+									/RS0004SimpleExampleFile.a205.cbor">
+
+										cbor
+
+									</a>
+								</div>
+
+								<div class="col-md-2">
+									<a class="btn btn--hexagon-secondary" href="assets/examples/
+
+									xlsx
+
+									/RS0004SimpleExampleFile.a205.xlsx">
+
+										xlsx
+
+									</a>
+								</div>
+
+								<div class="col-md-2">
+									<a class="btn btn--hexagon-secondary" href="assets/examples/
+
+									json
+
+									/RS0004SimpleExampleFile.a205.json">
+
+										json
+
+									</a>
+								</div>
+
+								<div class="col-md-2">
+									<a class="btn btn--hexagon-secondary" href="assets/examples/
+
+									yaml
+
+									/RS0004SimpleExampleFile.a205.yaml">
+
+										yaml
+
+									</a>
+								</div>
+
+							</div>
+						</div>
+					</li>
+
+				<li class="is-active">
+					<span id="RS" >RS0005: Motor</span>
+						<div class="accordion-content">
+							<div style="display: flex; justify-content: space-around; padding-top: 20px" class="row">
+								<div class="col-md-4">
+									<h4><a id="personal"></a>Electric Motor :
+
+									</h4>
+								</div>
+
+								<div class="col-md-2">
+									<a class="btn btn--hexagon-secondary" href="assets/examples/
+
+									cbor
+
+									/RS0005ExampleFile-constefficiency.a205.cbor">
+
+										cbor
+
+									</a>
+								</div>
+
+								<div class="col-md-2">
+									<a class="btn btn--hexagon-secondary" href="assets/examples/
+
+									xlsx
+
+									/RS0005ExampleFile-constefficiency.a205.xlsx">
+
+										xlsx
+
+									</a>
+								</div>
+
+								<div class="col-md-2">
+									<a class="btn btn--hexagon-secondary" href="assets/examples/
+
+									json
+
+									/RS0005ExampleFile-constefficiency.a205.json">
+
+										json
+
+									</a>
+								</div>
+
+								<div class="col-md-2">
+									<a class="btn btn--hexagon-secondary" href="assets/examples/
+
+									yaml
+
+									/RS0005ExampleFile-constefficiency.a205.yaml">
+
+										yaml
+
+									</a>
+								</div>
+
+							</div>
+						</div>
+					</li>
+
+				<li class="is-active">
+					<span id="RS" >RS0006: Electronic Motor Drive</span>
+						<div class="accordion-content">
+							<div style="display: flex; justify-content: space-around; padding-top: 20px" class="row">
+								<div class="col-md-4">
+									<h4><a id="personal"></a>Electronic Motor Drive :
+
+									</h4>
+								</div>
+
+								<div class="col-md-2">
+									<a class="btn btn--hexagon-secondary" href="assets/examples/
+
+									cbor
+
+									/RS0006ExampleFile-constefficiency.a205.cbor">
+
+										cbor
+
+									</a>
+								</div>
+
+								<div class="col-md-2">
+									<a class="btn btn--hexagon-secondary" href="assets/examples/
+
+									xlsx
+
+									/RS0006ExampleFile-constefficiency.a205.xlsx">
+
+										xlsx
+
+									</a>
+								</div>
+
+								<div class="col-md-2">
+									<a class="btn btn--hexagon-secondary" href="assets/examples/
+
+									json
+
+									/RS0006ExampleFile-constefficiency.a205.json">
+
+										json
+
+									</a>
+								</div>
+
+								<div class="col-md-2">
+									<a class="btn btn--hexagon-secondary" href="assets/examples/
+
+									yaml
+
+									/RS0006ExampleFile-constefficiency.a205.yaml">
+
+										yaml
+
+									</a>
+								</div>
+
+							</div>
+						</div>
+					</li>
+
+				<li></li>
+			</ul>
+			<hr>
+            <div class="footer"><p>Generated: 2020-05-19 08:00:27.916779+00:00</p></div>
 		</div>
 	</div>
+</div>
+	<script>
+		$('li').click(function(){
+			$(this).toggleClass("is-active");
+		});
+	</script>
 
-</div> <!-- end pageWrap -->
+	</div>
+</body>
+
 </html>
