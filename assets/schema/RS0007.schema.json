@@ -1,38 +1,33 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "title": "Electronic Motor Drive",
-    "description": "Schema for ASHRAE 205 annex RS0006: Electronic Motor Drive",
+    "title": "Mechanical Drive",
+    "description": "Schema for ASHRAE 205 annex RS0007: Mechanical Drive",
     "definitions": {
-        "CoolingMethod": {
+        "DriveType": {
             "type": "string",
             "enum": [
-                "PASSIVE_COOLED",
-                "ACTIVE_AIR_COOLED",
-                "ACTIVE_LIQUID_COOLED"
+                "V_BELT",
+                "COGGED_BELT",
+                "SYNCHRONOUS_BELT",
+                "GEAR",
+                "CHAIN"
             ],
             "enum_text": [
-                "Passive Cooled",
-                "Active Air Cooled",
-                "Active Liquid Cooled"
+                "V-Belt",
+                "Cogged Belt",
+                "Synchronous Belt",
+                "Gear",
+                "Chain"
             ],
             "descriptions": [
-                "Drive is cooled using natural air convection within the surrounding environment",
-                "Drive is cooled using forced air convection within the surrounding environment",
-                "Drive is cooled using forced liquid convection, transferring heat to the liquid"
-            ],
-            "notes": [
-                "All drive efficiency losses are assumed to be added as heat to the surrounding environment",
-                [
-                    "Electrical power required for the active cooling system shall be included in the efficiency of the drive",
-                    "All drive efficiency losses are assumed to be added as heat to the surrounding environment"
-                ],
-                [
-                    "Any liquid pumping power shall be modeled external to the drive by the application software",
-                    "All drive efficiency losses are assumed to be added as heat to the liquid stream"
-                ]
+                "V-Belt",
+                "Cogged Belt",
+                "Synchronous Belt",
+                "Gear",
+                "Chain"
             ]
         },
-        "RS0006": {
+        "RS0007": {
             "type": "object",
             "properties": {
                 "metadata": {
@@ -41,11 +36,11 @@
                 },
                 "description": {
                     "description": "Data group describing product and rating information",
-                    "$ref": "RS0006.schema.json#/definitions/Description"
+                    "$ref": "RS0007.schema.json#/definitions/Description"
                 },
                 "performance": {
                     "description": "Data group containing performance information",
-                    "$ref": "RS0006.schema.json#/definitions/Performance"
+                    "$ref": "RS0007.schema.json#/definitions/Performance"
                 }
             },
             "required": [
@@ -59,7 +54,7 @@
             "properties": {
                 "product_information": {
                     "description": "Data group describing product information",
-                    "$ref": "RS0006.schema.json#/definitions/ProductInformation"
+                    "$ref": "RS0007.schema.json#/definitions/ProductInformation"
                 }
             },
             "additionalProperties": false
@@ -75,6 +70,10 @@
                     "description": "Model number",
                     "$ref": "ASHRAE205.schema.json#/definitions/Pattern",
                     "notes": "Pattern shall match all model numbers that can be represented by the representation"
+                },
+                "drive_type": {
+                    "description": "Type of mechanical drive",
+                    "$ref": "RS0007.schema.json#/definitions/DriveType"
                 }
             },
             "additionalProperties": false
@@ -82,31 +81,19 @@
         "Performance": {
             "type": "object",
             "properties": {
-                "maximum_power": {
-                    "description": "Maximum power draw of the drive",
+                "speed_ratio": {
+                    "description": "Ratio of input shaft speed to output shaft speed",
                     "type": "number",
-                    "minimum": 0.0,
-                    "units": "W"
-                },
-                "standby_power": {
-                    "description": "Power draw when the motor is not operating",
-                    "type": "number",
-                    "minimum": 0.0,
-                    "units": "W"
-                },
-                "cooling_method": {
-                    "description": "Method used to cool the drive",
-                    "$ref": "RS0006.schema.json#/definitions/CoolingMethod"
+                    "exclusiveMinimum": 0.0,
+                    "units": "-"
                 },
                 "performance_map": {
                     "description": "Data group describing drive performance when operating",
-                    "$ref": "RS0006.schema.json#/definitions/PerformanceMap"
+                    "$ref": "RS0007.schema.json#/definitions/PerformanceMap"
                 }
             },
             "required": [
-                "maximum_power",
-                "standby_power",
-                "cooling_method",
+                "speed_ratio",
                 "performance_map"
             ],
             "additionalProperties": false
@@ -116,11 +103,11 @@
             "properties": {
                 "grid_variables": {
                     "description": "Data group describing grid variables for drive performance",
-                    "$ref": "RS0006.schema.json#/definitions/GridVariables"
+                    "$ref": "RS0007.schema.json#/definitions/GridVariables"
                 },
                 "lookup_variables": {
                     "description": "Data group describing lookup variables for drive performance",
-                    "$ref": "RS0006.schema.json#/definitions/LookupVariables"
+                    "$ref": "RS0007.schema.json#/definitions/LookupVariables"
                 }
             },
             "required": [
@@ -133,27 +120,17 @@
             "type": "object",
             "properties": {
                 "output_power": {
-                    "description": "Power delivered to the motor",
+                    "description": "Output shaft power",
                     "type": "array",
                     "minItems": 1,
                     "items": {
                         "type": "number"
                     },
                     "units": "W"
-                },
-                "output_frequency": {
-                    "description": "Frequency delivered to the motor",
-                    "type": "array",
-                    "minItems": 1,
-                    "items": {
-                        "type": "number"
-                    },
-                    "units": "Hz"
                 }
             },
             "required": [
-                "output_power",
-                "output_frequency"
+                "output_power"
             ],
             "additionalProperties": false
         },
@@ -171,10 +148,7 @@
                         ]
                     },
                     "units": "-",
-                    "notes": [
-                        "Defined as the ratio of electrical output power (to the motor) to electrical input power (to the drive)",
-                        "Input power shall include any power required to provide active air cooling for the drive"
-                    ]
+                    "notes": "Defined as the ratio of output shaft power to input shaft power"
                 }
             },
             "required": [
@@ -184,5 +158,5 @@
         }
     },
     "version": "0.1.0",
-    "$ref": "RS0006.schema.json#/definitions/RS0006"
+    "$ref": "RS0007.schema.json#/definitions/RS0007"
 }

@@ -1,247 +1,441 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Unitary Cooling Air-Conditioning Equipment",
-  "description": "Schema for ASHRAE 205 annex RS0002: Unitary Cooling Air-Conditioning Equipment",
-  "definitions": {
-    "FanPosition": {
-      "type": "string",
-      "enum": [
-        "BLOW_THROUGH",
-        "DRAW_THROUGH"
-      ],
-      "enum_text": [
-        "Blow Through",
-        "Draw Through"
-      ],
-      "descriptions": [
-        "Fan is placed downstream of the indoor coil",
-        "Fan is placed upstream of the indoor coil"
-      ]
-    },
-    "AHRI210240TestStandardYear": {
-      "type": "string",
-      "enum": [
-        "2008",
-        "2017"
-      ]
-    },
-    "AHRI340360TestStandardYear": {
-      "type": "string",
-      "enum": [
-        "2007",
-        "2015",
-        "IP_2019"
-      ],
-      "enum_text": [
-        "2007",
-        "2015",
-        "IP/2019"
-      ]
-    },
-    "RS0002": {
-      "type": "object",
-      "properties": {
-        "description": {
-          "description": "Data group describing product and rating information",
-          "$ref": "RS0002.schema.json#/definitions/Description"
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Unitary Cooling Air-Conditioning Equipment",
+    "description": "Schema for ASHRAE 205 annex RS0002: Unitary Cooling Air-Conditioning Equipment",
+    "definitions": {
+        "FanPosition": {
+            "type": "string",
+            "enum": [
+                "BLOW_THROUGH",
+                "DRAW_THROUGH"
+            ],
+            "enum_text": [
+                "Blow Through",
+                "Draw Through"
+            ],
+            "descriptions": [
+                "Fan is placed upstream of the indoor coil",
+                "Fan is placed downstream of the indoor coil"
+            ]
         },
-        "performance": {
-          "description": "Data group containing performance information",
-          "$ref": "RS0002.schema.json#/definitions/Performance"
+        "AHRI210240TestStandardYear": {
+            "type": "string",
+            "enum": [
+                "IP_2008",
+                "IP_2017"
+            ],
+            "enum_text": [
+                "2008",
+                "2017"
+            ],
+            "descriptions": [
+                "Rating is based on 2008 AHRI standard[@AHRI2102008]",
+                "Rating is based on 2017 AHRI standard[@AHRI2102017]"
+            ]
+        },
+        "AHRI210240CompressorStagingType": {
+            "type": "string",
+            "enum": [
+                "SINGLE_STAGE",
+                "TWO_STAGE",
+                "VARIABLE_STAGE"
+            ],
+            "enum_text": [
+                "Single Stage",
+                "Two-Stage",
+                "Variable Stage"
+            ],
+            "descriptions": [
+                "Single, fixed capacity compressor",
+                "Compressor or group of compressors operating with only two stages of capacity",
+                "Variable speed compressor or compressor or group of compressors with three or more stages of capacity"
+            ]
+        },
+        "AHRI340360TestStandardYear": {
+            "type": "string",
+            "enum": [
+                "IP_2007",
+                "IP_2015",
+                "IP_2019"
+            ],
+            "enum_text": [
+                "2007",
+                "2015",
+                "2019"
+            ],
+            "descriptions": [
+                "Rating is based on 2007 AHRI standard[@AHRI3402007]",
+                "Rating is based on 2015 AHRI standard[@AHRI3402015]",
+                "Rating is based on 2019 AHRI standard[@AHRI3402019]"
+            ]
+        },
+        "AHRI340360CapacityControlType": {
+            "type": "string",
+            "enum": [
+                "FIXED_CAPACITY",
+                "STAGED_CAPACITY",
+                "PROPORTIONAL_CAPACITY"
+            ],
+            "enum_text": [
+                "Fixed Capacity",
+                "Staged Capacity",
+                "Proportional Capacity"
+            ],
+            "descriptions": [
+                "Limited to a single stage of refrigeration capacity",
+                "Limited to multiple fixed or discrete stages of refrigeration capacity",
+                "Compressor capacity can be modulated continuously or in steps not more than 5% of the rated capacity"
+            ]
+        },
+        "RS0002": {
+            "type": "object",
+            "properties": {
+                "metadata": {
+                    "description": "Metadata data group",
+                    "$ref": "ASHRAE205.schema.json#/definitions/Metadata"
+                },
+                "description": {
+                    "description": "Data group describing product and rating information",
+                    "$ref": "RS0002.schema.json#/definitions/Description"
+                },
+                "performance": {
+                    "description": "Data group containing performance information",
+                    "$ref": "RS0002.schema.json#/definitions/Performance"
+                }
+            },
+            "required": [
+                "metadata",
+                "performance"
+            ],
+            "additionalProperties": false
+        },
+        "Description": {
+            "type": "object",
+            "properties": {
+                "product_information": {
+                    "description": "Data group describing product information",
+                    "$ref": "RS0002.schema.json#/definitions/ProductInformation"
+                },
+                "rating_ahri_210_240": {
+                    "description": "Data group containing information relevant to products rated under AHRI 210/240",
+                    "$ref": "RS0002.schema.json#/definitions/RatingAHRI210240"
+                },
+                "rating_ahri_340_360": {
+                    "description": "Data group containing information relevant to products rated under AHRI 340/360",
+                    "$ref": "RS0002.schema.json#/definitions/RatingAHRI340360"
+                }
+            },
+            "additionalProperties": false
+        },
+        "ProductInformation": {
+            "type": "object",
+            "properties": {
+                "manufacturer": {
+                    "description": "Package manufacturer name",
+                    "type": "string"
+                },
+                "model_number": {
+                    "description": "Package model number",
+                    "$ref": "ASHRAE205.schema.json#/definitions/Pattern",
+                    "notes": "Pattern shall match all model numbers that can be represented by the representation"
+                }
+            },
+            "additionalProperties": false
+        },
+        "RatingAHRI210240": {
+            "type": "object",
+            "properties": {
+                "certified_reference_number": {
+                    "description": "AHRI certified reference number",
+                    "type": "string"
+                },
+                "test_standard_year": {
+                    "description": "Year of the AHRI test standard",
+                    "$ref": "RS0002.schema.json#/definitions/AHRI210240TestStandardYear"
+                },
+                "rating_source": {
+                    "description": "Source of this rating data",
+                    "type": "string",
+                    "notes": "Used by data publisher to document methods (e.g. software and version) used to generate rating data"
+                },
+                "staging_type": {
+                    "description": "Type of compressor staging",
+                    "$ref": "RS0002.schema.json#/definitions/AHRI210240CompressorStagingType"
+                },
+                "seer": {
+                    "description": "Seasonal Energy Efficiency Ratio",
+                    "type": "number",
+                    "exclusiveMinimum": 0.0,
+                    "units": "Btu/W-h"
+                },
+                "eer_a_full": {
+                    "description": "Full stage Energy Efficiency Ratio (at 'A' operating conditions)",
+                    "type": "number",
+                    "exclusiveMinimum": 0.0,
+                    "units": "Btu/W-h"
+                },
+                "eer_b_full": {
+                    "description": "Full stage Energy Efficiency Ratio (at 'B' operating conditions)",
+                    "type": "number",
+                    "exclusiveMinimum": 0.0,
+                    "units": "Btu/W-h"
+                },
+                "cooling_a_full_capacity": {
+                    "description": "Full stage net total cooling capacity (at 'A' operating conditions)",
+                    "type": "number",
+                    "minimum": 0.0,
+                    "units": "Btu/h"
+                },
+                "cooling_b_full_capacity": {
+                    "description": "Full stage net total cooling capacity (at 'B' operating conditions)",
+                    "type": "number",
+                    "minimum": 0.0,
+                    "units": "Btu/h"
+                },
+                "cooling_b_low_capacity": {
+                    "description": "Low stage net total cooling capacity (at 'B' operating conditions)",
+                    "type": "number",
+                    "minimum": 0.0,
+                    "units": "Btu/h"
+                },
+                "cooling_f_low_capacity": {
+                    "description": "Low stage net total cooling capacity (at 'F' operating conditions)",
+                    "type": "number",
+                    "minimum": 0.0,
+                    "units": "Btu/h"
+                },
+                "cooling_a_full_power": {
+                    "description": "Full stage net total cooling power (at 'A' operating conditions)",
+                    "type": "number",
+                    "minimum": 0.0,
+                    "units": "W"
+                },
+                "cooling_b_full_power": {
+                    "description": "Full stage net total cooling power (at 'B' operating conditions)",
+                    "type": "number",
+                    "minimum": 0.0,
+                    "units": "W"
+                },
+                "cooling_b_low_power": {
+                    "description": "Low stage net total cooling power (at 'B' operating conditions)",
+                    "type": "number",
+                    "minimum": 0.0,
+                    "units": "W"
+                },
+                "cooling_f_low_power": {
+                    "description": "Low stage net total cooling power (at 'F' operating conditions)",
+                    "type": "number",
+                    "minimum": 0.0,
+                    "units": "W"
+                },
+                "cooling_full_fan_power": {
+                    "description": "Power of the indoor fan at full load",
+                    "type": "number",
+                    "exclusiveMinimum": 0.0,
+                    "units": "W"
+                },
+                "cooling_full_air_volumetric_flow_rate": {
+                    "description": "Standard air volumetric rate of the indoor fan at full load",
+                    "type": "number",
+                    "exclusiveMinimum": 0.0,
+                    "units": "cfm"
+                },
+                "cooling_low_fan_power": {
+                    "description": "Power of the indoor fan at low stage",
+                    "type": "number",
+                    "exclusiveMinimum": 0.0,
+                    "units": "W"
+                },
+                "cooling_low_air_volumetric_flow_rate": {
+                    "description": "Standard air volumetric rate of the indoor fan at low stage",
+                    "type": "number",
+                    "exclusiveMinimum": 0.0,
+                    "units": "cfm"
+                },
+                "rating_reproducible_from_performance_data": {
+                    "description": "Whether this rating can be reproduced using the performance data in the representation",
+                    "type": "boolean",
+                    "notes": "True if the rating values in this table can be reproduced using the performance data in the representation within the tolerance of the rating standard"
+                }
+            },
+            "if": {
+                "properties": {
+                    "staging_type": {
+                        "not": {
+                            "const": "SINGLE_STAGE"
+                        }
+                    }
+                }
+            },
+            "then": {
+                "required": [
+                    "eer_b_full",
+                    "cooling_b_full_capacity",
+                    "cooling_b_low_capacity",
+                    "cooling_f_low_capacity",
+                    "cooling_a_full_power",
+                    "cooling_b_full_power",
+                    "cooling_b_low_power",
+                    "cooling_f_low_power",
+                    "cooling_low_fan_power",
+                    "cooling_low_air_volumetric_flow_rate"
+                ]
+            },
+            "required": [
+                "certified_reference_number",
+                "test_standard_year",
+                "staging_type",
+                "seer",
+                "eer_a_full",
+                "cooling_a_full_capacity",
+                "cooling_full_fan_power",
+                "cooling_full_air_volumetric_flow_rate",
+                "rating_reproducible_from_performance_data"
+            ],
+            "additionalProperties": false
+        },
+        "RatingAHRI340360": {
+            "type": "object",
+            "properties": {
+                "certified_reference_number": {
+                    "description": "AHRI Certified Reference Number",
+                    "type": "string"
+                },
+                "test_standard_year": {
+                    "description": "Name and version of the AHRI test standard",
+                    "$ref": "RS0002.schema.json#/definitions/AHRI340360TestStandardYear"
+                },
+                "rating_source": {
+                    "description": "Source of this rating data",
+                    "type": "string",
+                    "notes": "Used by data publisher to document methods (e.g. software and version) used to generate rating data"
+                },
+                "capacity_control_type": {
+                    "description": "Type of capacity control",
+                    "$ref": "RS0002.schema.json#/definitions/AHRI340360CapacityControlType"
+                },
+                "ieer": {
+                    "description": "Integrated Energy Efficiency Ratio",
+                    "type": "number",
+                    "exclusiveMinimum": 0.0,
+                    "units": "Btu/W-h"
+                },
+                "eer": {
+                    "description": "Energy Efficiency Ratio at Standard Rating Conditions",
+                    "type": "number",
+                    "exclusiveMinimum": 0.0,
+                    "units": "Btu/W-h"
+                },
+                "cooling_capacity": {
+                    "description": "Net total cooling capacity at Standard Rating Conditions",
+                    "type": "number",
+                    "minimum": 0.0,
+                    "units": "Btu/h"
+                },
+                "part_load_points": {
+                    "description": "Four part load rating points",
+                    "type": "array",
+                    "minItems": 4,
+                    "maxItems": 4,
+                    "items": {
+                        "$ref": "RS0002.schema.json#/definitions/RatingAHRI340360CoolingPartLoadPoint"
+                    }
+                },
+                "rating_reproducible_from_performance_data": {
+                    "description": "Whether this rating can be reproduced using the performance data in the representation",
+                    "type": "boolean",
+                    "notes": "True if the rating values in this table can be reproduced using the performance data in the representation within the tolerance of the rating standard"
+                }
+            },
+            "required": [
+                "certified_reference_number",
+                "test_standard_year",
+                "capacity_control_type",
+                "ieer",
+                "eer",
+                "cooling_capacity",
+                "rating_reproducible_from_performance_data"
+            ],
+            "additionalProperties": false
+        },
+        "RatingAHRI340360CoolingPartLoadPoint": {
+            "type": "object",
+            "properties": {
+                "capacity": {
+                    "description": "Net total cooling capacity",
+                    "type": "number",
+                    "minimum": 0.0,
+                    "units": "Btu/h"
+                },
+                "net_power": {
+                    "description": "Net cooling power (including the indoor fan motor, controls, and other auxiliary loads)",
+                    "type": "number",
+                    "minimum": 0.0,
+                    "units": "W"
+                },
+                "indoor_fan_power": {
+                    "description": "Power of the indoor fan motor",
+                    "type": "number",
+                    "exclusiveMinimum": 0.0,
+                    "units": "W"
+                },
+                "auxiliary_power": {
+                    "description": "Power of the control circuit and any other auxiliary loads",
+                    "type": "number",
+                    "exclusiveMinimum": 0.0,
+                    "units": "W"
+                },
+                "air_volumetric_flow_rate": {
+                    "description": "Standard air volumetric rate of the indoor fan",
+                    "type": "number",
+                    "exclusiveMinimum": 0.0,
+                    "units": "cfm"
+                }
+            },
+            "required": [
+                "capacity",
+                "net_power",
+                "indoor_fan_power",
+                "auxiliary_power",
+                "air_volumetric_flow_rate"
+            ],
+            "additionalProperties": false
+        },
+        "Performance": {
+            "type": "object",
+            "properties": {
+                "standby_power": {
+                    "description": "Continuous unit power draw regardless of fan or DX system operation",
+                    "type": "number",
+                    "minimum": 0.0,
+                    "units": "W",
+                    "notes": "Includes on-board controls and other power not included in the fan or dx system representations"
+                },
+                "fan_representation": {
+                    "description": "The corresponding Standard 205 fan assembly representation",
+                    "$ref": "RS0003.schema.json#/definitions/RS0003",
+                    "notes": "Required if the fan is packaged with the unitary equipment"
+                },
+                "fan_position": {
+                    "description": "Position of the fan relative to the cooling coil",
+                    "$ref": "RS0002.schema.json#/definitions/FanPosition"
+                },
+                "dx_system_representation": {
+                    "description": "The corresponding Standard 205 direct expansion coil system representation",
+                    "$ref": "RS0004.schema.json#/definitions/RS0004"
+                }
+            },
+            "required": [
+                "standby_power"
+            ],
+            "dependencies": {
+                "fan_representation": [
+                    "fan_position"
+                ]
+            },
+            "additionalProperties": false
         }
-      },
-      "required": [
-        "performance"
-      ],
-      "additionalProperties": false
     },
-    "Description": {
-      "type": "object",
-      "properties": {
-        "product_information": {
-          "description": "Data group describing product information",
-          "$ref": "RS0002.schema.json#/definitions/ProductInformation"
-        },
-        "rating_AHRI_210_240": {
-          "description": "Data group containing information relevant to products rated under AHRI 210/240",
-          "$ref": "RS0002.schema.json#/definitions/RatingAHRI210240"
-        },
-        "rating_AHRI_340_360": {
-          "description": "Data group containing information relevant to products rated under AHRI 340/360",
-          "$ref": "RS0002.schema.json#/definitions/RatingAHRI340360"
-        }
-      },
-      "additionalProperties": false
-    },
-    "ProductInformation": {
-      "type": "object",
-      "properties": {
-        "manufacturer": {
-          "description": "Manufacturer name",
-          "type": "string"
-        },
-        "model_number": {
-          "description": "Model number",
-          "$ref": "ASHRAE205.schema.json#/definitions/Pattern",
-          "note": "Pattern shall match all model numbers that can be represented by the representation"
-        }
-      },
-      "required": [
-        "manufacturer",
-        "model_number"
-      ],
-      "additionalProperties": false
-    },
-    "RatingAHRI210240": {
-      "type": "object",
-      "properties": {
-        "certified_reference_number": {
-          "description": "AHRI Certified Reference Number",
-          "type": "string"
-        },
-        "test_standard_year": {
-          "description": "Name and version of the AHRI test standard",
-          "$ref": "RS0002.schema.json#/definitions/AHRI210240TestStandardYear"
-        },
-        "manufacturer_data_source_version": {
-          "description": "Version of the software used to generate the AHRI rating and the performance maps",
-          "type": "string"
-        },
-        "SEER": {
-          "description": "Seasonal Energy Efficiency Ratio as defined by AHRI 210/240",
-          "type": "number",
-          "exclusiveMinimum": 0,
-          "units": "Btu/W-h"
-        },
-        "EER": {
-          "description": "Energy Efficiency Ratio (A) as defined by AHRI 210/240",
-          "type": "number",
-          "exclusiveMinimum": 0,
-          "units": "Btu/W-h",
-          "notes": "The net efficiency (accounting for fan motor heat/power) at the AHRI 'A' operating conditions"
-        },
-        "capacity": {
-          "description": "Total cooling capacity (A) as defined by AHRI 210/240",
-          "type": "number",
-          "exclusiveMinimum": 0,
-          "units": "Btu/h",
-          "notes": "The net capacity (accounting for fan motor heat) at the AHRI 'A' operating conditions"
-        },
-        "rating_fan_power_per_flow": {
-          "description": "Power per air flow rate of the fan used in the AHRI 210/240 calculation of SEER and EER",
-          "type": "number",
-          "exclusiveMinimum": 0,
-          "units": "W/(m3/s)",
-          "notes": "Used for verification of the rated SEER value (see SEER calculation procedures in AHRI 210/240)"
-        },
-        "rating_reproducible_from_performance_data": {
-          "description": "Whether this rating can be reproduced using the performance data in the representation",
-          "type": "boolean",
-          "notes": "Mark this field as true if the rating values in this table can be reproduced using the performance data in the representation within the tolerance of the rating standard."
-        }
-      },
-      "required": [
-        "certified_reference_number",
-        "test_standard_year",
-        "manufacturer_data_source_version",
-        "SEER",
-        "EER",
-        "capacity",
-        "rating_reproducible_from_performance_data"
-      ],
-      "additionalProperties": false
-    },
-    "RatingAHRI340360": {
-      "type": "object",
-      "properties": {
-        "certified_reference_number": {
-          "description": "AHRI Certified Reference Number",
-          "type": "string"
-        },
-        "test_standard_year": {
-          "description": "Name and version of the AHRI test standard",
-          "$ref": "RS0002.schema.json#/definitions/AHRI340360TestStandardYear"
-        },
-        "manufacturer_data_source_version": {
-          "description": "Version of the software used to generate the AHRI rating and the performance maps",
-          "type": "string"
-        },
-        "IEER": {
-          "description": "Integrated Energy Efficiency Ratio as defined by AHRI 340/360",
-          "type": "number",
-          "exclusiveMinimum": 0,
-          "units": "Btu/W-h"
-        },
-        "EER": {
-          "description": "Energy Efficiency Ratio as defined by AHRI 340/360",
-          "type": "number",
-          "exclusiveMinimum": 0,
-          "units": "Btu/W-h",
-          "notes": "Net efficiency accounts for fan motor heat/power"
-        },
-        "capacity": {
-          "description": "Total cooling capacity as defined by AHRI 340/360",
-          "type": "number",
-          "exclusiveMinimum": 0,
-          "units": "Btu/h",
-          "notes": "Net capacity accounts for fan motor heat"
-        },
-        "rating_fan_power_per_flow": {
-          "description": "Power per air flow rate of the indoor fan used in the AHRI 340/360 calculation of IEER and EER",
-          "type": "number",
-          "exclusiveMinimum": 0,
-          "units": "W/(m3/s)",
-          "notes": "Used for verification of the rated SEER value (see SEER calculation procedures in AHRI 340/360)"
-        },
-        "rating_reproducible_from_performance_data": {
-          "description": "Whether this rating can be reproduced using the performance data in the representation",
-          "type": "boolean",
-          "notes": "Mark this field as true if the rating values in this table can be reproduced using the performance data in the representation within the tolerance of the rating standard."
-        }
-      },
-      "required": [
-        "certified_reference_number",
-        "test_standard_year",
-        "manufacturer_data_source_version",
-        "IEER",
-        "EER",
-        "capacity",
-        "rating_reproducible_from_performance_data"
-      ],
-      "additionalProperties": false
-    },
-    "Performance": {
-      "type": "object",
-      "properties": {
-        "standby_power": {
-          "description": "Continuous unit power draw regardless of whether the fan or DX system are operating.",
-          "type": "number",
-          "units": "W",
-          "minimum": 0,
-          "notes": "Includes on-board controls and other power not otherwise included in the fan or dx system representations."
-        },
-        "fan_representation": {
-          "description": "The corresponding Standard 205 enclosed fan assembly representation",
-          "$ref": "ASHRAE205.schema.json#definitions/ASHRAE205",
-          "RS": "RS0003",
-          "notes": "This is only required if the fan is packaged with the unitary equipment."
-        },
-        "fan_position": {
-          "description": "Position of the fan relative to the indoor coil",
-          "$ref": "RS0002.schema.json#/definitions/FanPosition"
-        },
-        "DX_system_representation": {
-          "description": "The corresponding Standard 205 direct expansion coil system representation",
-          "$ref": "ASHRAE205.schema.json#definitions/ASHRAE205",
-          "RS": "RS0004"
-        }
-      },
-      "required": [
-        "standby_power",
-        "fan_position",
-        "DX_system_representation"
-      ],
-      "additionalProperties": false
-    }
-  }
+    "version": "0.1.0",
+    "$ref": "RS0002.schema.json#/definitions/RS0002"
 }
