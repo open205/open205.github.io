@@ -38,7 +38,7 @@
                 "Liquid-Cooled Chiller",
                 "Unitary Cooling Air-Conditioning Equipment",
                 "Fan Assembly",
-                "Air-to-Air Direct Expansion Refrigerant Coil System",
+                "Air-to-Air Direct Expansion Refrigerant System",
                 "Motor",
                 "Electronic Motor Drive",
                 "Mechanical Drive"
@@ -68,7 +68,7 @@
                 "Scroll compressor"
             ]
         },
-        "CompressorSpeedControlType": {
+        "SpeedControlType": {
             "type": "string",
             "enum": [
                 "DISCRETE",
@@ -79,8 +79,8 @@
                 "Continuous"
             ],
             "descriptions": [
-                "Compressor loading is controlled by cycling between one or more discrete stages",
-                "Compressor loading is controlled by continuously varying the speed of the compressor"
+                "Loading is controlled by cycling between one or more discrete stages",
+                "Loading is controlled by continuously varying the speed"
             ]
         },
         "CondenserType": {
@@ -194,7 +194,7 @@
                     "description": "Source(s) of the data",
                     "type": "string",
                     "notes": [
-                        "Used by data publisher to document methods (e.g. software and version) used to generate data",
+                        "Used by data publisher to document methods (e.g., software and version) used to generate data",
                         "***Informative note:*** `data_source` may be different from other data source(s) included elsewhere within the data"
                     ]
                 },
@@ -261,5 +261,5 @@
             "additionalProperties": false
         }
     },
-    "version": "0.2.0"
+    "version": "1.0.0"
 }

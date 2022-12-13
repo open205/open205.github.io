@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "title": "Air-to-Air Direct Expansion Refrigerant Coil System",
-    "description": "Schema for ASHRAE 205 annex RS0004: Air-to-Air Direct Expansion Refrigerant Coil System",
+    "title": "Air-to-Air Direct Expansion Refrigerant System",
+    "description": "Schema for ASHRAE 205 annex RS0004: Air-to-Air Direct Expansion Refrigerant System",
     "definitions": {
         "RS0004": {
             "type": "object",
@@ -74,10 +74,10 @@
             "properties": {
                 "compressor_speed_control_type": {
                     "description": "Method used to control different speeds of the compressor",
-                    "$ref": "ASHRAE205.schema.json#/definitions/CompressorSpeedControlType"
+                    "$ref": "ASHRAE205.schema.json#/definitions/SpeedControlType"
                 },
                 "cycling_degradation_coefficient": {
-                    "description": "Cycling degradation coefficient (C<sub>D</sub>) as described in AHRI 210/240",
+                    "description": "Cycling degradation coefficient (C~D~) as described in AHRI 210/240",
                     "type": "number",
                     "minimum": 0.0,
                     "exclusiveMaximum": 1.0,
@@ -308,6 +308,6 @@
             "additionalProperties": false
         }
     },
-    "version": "0.2.0",
+    "version": "1.0.0",
     "$ref": "RS0004.schema.json#/definitions/RS0004"
 }

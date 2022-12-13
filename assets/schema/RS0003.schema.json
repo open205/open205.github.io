@@ -3,25 +3,6 @@
     "title": "Fan Assembly",
     "description": "Schema for ASHRAE 205 annex RS0003: Fan Assembly",
     "definitions": {
-        "OperationSpeedControlType": {
-            "type": "string",
-            "enum": [
-                "DISCRETE",
-                "CONTINUOUS"
-            ],
-            "enum_text": [
-                "Discrete",
-                "Continuous"
-            ],
-            "descriptions": [
-                "Fan assemblies that operate at one or more defined speeds dictated by a tap or dip switch",
-                "Fan assemblies that operate within a continuous range of speeds"
-            ],
-            "notes": [
-                "Performance map data is provided at individual impeller speeds",
-                "Performance map data is provided over a range of impeller speeds"
-            ]
-        },
         "InstallationSpeedControlType": {
             "type": "string",
             "enum": [
@@ -209,8 +190,12 @@
                 },
                 "operation_speed_control_type": {
                     "description": "Type of performance map",
-                    "$ref": "RS0003.schema.json#/definitions/OperationSpeedControlType",
-                    "notes": "Determines which performance map data group is used for `performance_map`"
+                    "$ref": "ASHRAE205.schema.json#/definitions/SpeedControlType",
+                    "notes": [
+                        "Determines which performance map data group is used for `performance_map`",
+                        "If `operation_speed_control_type` is `DISCRETE` performance map data is provided at individual impeller speeds",
+                        "If `operation_speed_control_type` is `CONTINUOUS` performance map data is provided over a range of impeller speeds"
+                    ]
                 },
                 "installation_speed_control_type": {
                     "description": "Type of fan impeller speed control",
@@ -236,19 +221,23 @@
                     "description": "Data group describing fan assembly performance when operating"
                 }
             },
-            "if": {
-                "properties": {
-                    "is_enclosed": {
-                        "const": true
-                    }
-                }
-            },
-            "then": {
-                "required": [
-                    "assembly_components"
-                ]
-            },
             "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "allOf": {
+                                "is_enclosed": {
+                                    "const": true
+                                }
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "assembly_components"
+                        ]
+                    }
+                },
                 {
                     "if": {
                         "properties": {
@@ -534,6 +523,6 @@
             "additionalProperties": false
         }
     },
-    "version": "0.2.0",
+    "version": "1.0.0",
     "$ref": "RS0003.schema.json#/definitions/RS0003"
 }

@@ -22,15 +22,18 @@
             "type": "string",
             "enum": [
                 "IP_2008",
-                "IP_2017"
+                "IP_2017",
+                "IP_2023"
             ],
             "enum_text": [
                 "2008",
-                "2017"
+                "2017",
+                "2023"
             ],
             "descriptions": [
                 "Rating is based on 2008 AHRI standard[@AHRI2102008]",
-                "Rating is based on 2017 AHRI standard[@AHRI2102017]"
+                "Rating is based on 2017 AHRI standard[@AHRI2102017]",
+                "Rating is based on 2023 AHRI standard[@AHRI2102023]"
             ]
         },
         "AHRI210240CompressorStagingType": {
@@ -156,7 +159,7 @@
                 "rating_source": {
                     "description": "Source of this rating data",
                     "type": "string",
-                    "notes": "Used by data publisher to document methods (e.g. software and version) used to generate rating data"
+                    "notes": "Used by data publisher to document methods (e.g., software and version) used to generate rating data"
                 },
                 "staging_type": {
                     "description": "Type of compressor staging",
@@ -166,13 +169,15 @@
                     "description": "Seasonal Energy Efficiency Ratio",
                     "type": "number",
                     "exclusiveMinimum": 0.0,
-                    "units": "Btu/W-h"
+                    "units": "Btu/W-h",
+                    "notes": "Represents SEER2 for the 2023 version of test standard"
                 },
                 "eer_a_full": {
                     "description": "Full stage Energy Efficiency Ratio (at 'A' operating conditions)",
                     "type": "number",
                     "exclusiveMinimum": 0.0,
-                    "units": "Btu/W-h"
+                    "units": "Btu/W-h",
+                    "notes": "Represents EER2~A_Full~ for the 2023 version of test standard"
                 },
                 "eer_b_full": {
                     "description": "Full stage Energy Efficiency Ratio (at 'B' operating conditions)",
@@ -204,6 +209,18 @@
                     "minimum": 0.0,
                     "units": "Btu/h"
                 },
+                "cooling_g_low_capacity": {
+                    "description": "Low stage net total cooling capacity (at 'G' operating conditions)",
+                    "type": "number",
+                    "minimum": 0.0,
+                    "units": "Btu/h"
+                },
+                "cooling_i_low_capacity": {
+                    "description": "Low stage net total cooling capacity (at 'I' operating conditions)",
+                    "type": "number",
+                    "minimum": 0.0,
+                    "units": "Btu/h"
+                },
                 "cooling_a_full_power": {
                     "description": "Full stage net total cooling power (at 'A' operating conditions)",
                     "type": "number",
@@ -224,6 +241,18 @@
                 },
                 "cooling_f_low_power": {
                     "description": "Low stage net total cooling power (at 'F' operating conditions)",
+                    "type": "number",
+                    "minimum": 0.0,
+                    "units": "W"
+                },
+                "cooling_g_low_power": {
+                    "description": "Low stage net total cooling power (at 'G' operating conditions)",
+                    "type": "number",
+                    "minimum": 0.0,
+                    "units": "W"
+                },
+                "cooling_i_low_power": {
+                    "description": "Low stage net total cooling power (at 'I' operating conditions)",
                     "type": "number",
                     "minimum": 0.0,
                     "units": "W"
@@ -252,35 +281,67 @@
                     "exclusiveMinimum": 0.0,
                     "units": "cfm"
                 },
-                "rating_reproducible_from_performance_data": {
-                    "description": "Whether this rating can be reproduced using the performance data in the representation",
+                "rating_recalculatable_from_performance_data": {
+                    "description": "Whether this rating can be recalculated using the performance data in the representation",
                     "type": "boolean",
-                    "notes": "True if the rating values in this table can be reproduced using the performance data in the representation within the tolerance of the rating standard"
+                    "notes": "True if the rating values in this table can be recalculated using the performance data in the representation within the tolerance of the rating standard"
+                },
+                "rating_recalculatable_explanation": {
+                    "description": "An explanation of the value for `rating_recalculatable_from_performance_data`",
+                    "type": "string"
                 }
             },
-            "if": {
-                "properties": {
-                    "staging_type": {
-                        "not": {
-                            "const": "SINGLE_STAGE"
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "allOf": {
+                                "staging_type": {
+                                    "not": {
+                                        "const": "SINGLE_STAGE"
+                                    }
+                                }
+                            }
                         }
+                    },
+                    "then": {
+                        "required": [
+                            "eer_b_full",
+                            "cooling_b_full_capacity",
+                            "cooling_b_low_capacity",
+                            "cooling_f_low_capacity",
+                            "cooling_a_full_power",
+                            "cooling_b_full_power",
+                            "cooling_b_low_power",
+                            "cooling_f_low_power",
+                            "cooling_low_fan_power",
+                            "cooling_low_air_volumetric_flow_rate"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "allOf": {
+                                "staging_type": {
+                                    "const": "VARIABLE_STAGE"
+                                },
+                                "test_standard_year": {
+                                    "const": "IP_2023"
+                                }
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "cooling_g_low_capacity",
+                            "cooling_i_low_capacity",
+                            "cooling_g_low_power",
+                            "cooling_i_low_power"
+                        ]
                     }
                 }
-            },
-            "then": {
-                "required": [
-                    "eer_b_full",
-                    "cooling_b_full_capacity",
-                    "cooling_b_low_capacity",
-                    "cooling_f_low_capacity",
-                    "cooling_a_full_power",
-                    "cooling_b_full_power",
-                    "cooling_b_low_power",
-                    "cooling_f_low_power",
-                    "cooling_low_fan_power",
-                    "cooling_low_air_volumetric_flow_rate"
-                ]
-            },
+            ],
             "required": [
                 "certified_reference_number",
                 "test_standard_year",
@@ -290,7 +351,7 @@
                 "cooling_a_full_capacity",
                 "cooling_full_fan_power",
                 "cooling_full_air_volumetric_flow_rate",
-                "rating_reproducible_from_performance_data"
+                "rating_recalculatable_from_performance_data"
             ],
             "additionalProperties": false
         },
@@ -308,7 +369,7 @@
                 "rating_source": {
                     "description": "Source of this rating data",
                     "type": "string",
-                    "notes": "Used by data publisher to document methods (e.g. software and version) used to generate rating data"
+                    "notes": "Used by data publisher to document methods (e.g., software and version) used to generate rating data"
                 },
                 "capacity_control_type": {
                     "description": "Type of capacity control",
@@ -341,10 +402,14 @@
                         "$ref": "RS0002.schema.json#/definitions/RatingAHRI340360CoolingPartLoadPoint"
                     }
                 },
-                "rating_reproducible_from_performance_data": {
-                    "description": "Whether this rating can be reproduced using the performance data in the representation",
+                "rating_recalculatable_from_performance_data": {
+                    "description": "Whether this rating can be recalculated using the performance data in the representation",
                     "type": "boolean",
-                    "notes": "True if the rating values in this table can be reproduced using the performance data in the representation within the tolerance of the rating standard"
+                    "notes": "True if the rating values in this table can be recalculated using the performance data in the representation within the tolerance of the rating standard"
+                },
+                "rating_recalculatable_explanation": {
+                    "description": "An explanation of the value for `rating_recalculatable_from_performance_data`",
+                    "type": "string"
                 }
             },
             "required": [
@@ -354,7 +419,7 @@
                 "ieer",
                 "eer",
                 "cooling_capacity",
-                "rating_reproducible_from_performance_data"
+                "rating_recalculatable_from_performance_data"
             ],
             "additionalProperties": false
         },
@@ -395,7 +460,6 @@
             "required": [
                 "capacity",
                 "net_power",
-                "indoor_fan_power",
                 "auxiliary_power",
                 "air_volumetric_flow_rate"
             ],
@@ -411,17 +475,17 @@
                     "units": "W",
                     "notes": "Includes on-board controls and other power not included in the fan or dx system representations"
                 },
-                "fan_representation": {
+                "indoor_fan_representation": {
                     "description": "The corresponding Standard 205 fan assembly representation",
                     "$ref": "RS0003.schema.json#/definitions/RS0003",
-                    "notes": "Required if the fan is packaged with the unitary equipment"
+                    "notes": "Required if the indoor fan is packaged with the unitary equipment"
                 },
                 "fan_position": {
                     "description": "Position of the fan relative to the cooling coil",
                     "$ref": "RS0002.schema.json#/definitions/FanPosition"
                 },
                 "dx_system_representation": {
-                    "description": "The corresponding Standard 205 direct expansion coil system representation",
+                    "description": "The corresponding Standard 205 direct expansion system representation",
                     "$ref": "RS0004.schema.json#/definitions/RS0004"
                 }
             },
@@ -429,13 +493,13 @@
                 "standby_power"
             ],
             "dependencies": {
-                "fan_representation": [
+                "indoor_fan_representation": [
                     "fan_position"
                 ]
             },
             "additionalProperties": false
         }
     },
-    "version": "0.2.0",
+    "version": "1.0.0",
     "$ref": "RS0002.schema.json#/definitions/RS0002"
 }

@@ -157,6 +157,6 @@
             "additionalProperties": false
         }
     },
-    "version": "0.1.0",
+    "version": "1.0.0",
     "$ref": "RS0007.schema.json#/definitions/RS0007"
 }

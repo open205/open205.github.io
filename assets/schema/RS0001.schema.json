@@ -29,17 +29,20 @@
             "enum": [
                 "SI_2015",
                 "SI_2015_ADDENDUM_1",
-                "SI_2018"
+                "SI_2018",
+                "SI_2020"
             ],
             "enum_text": [
                 "AHRI 551/591 2015",
                 "AHRI 551/591 2015 Addendum 1",
-                "AHRI 551/591 2018"
+                "AHRI 551/591 2018",
+                "AHRI 551/591 2020"
             ],
             "descriptions": [
                 "Ratings and design points defined using SI unit version of the standard, 2015 edition[@AHRI5512015]",
                 "Ratings and design points defined using SI unit version of the standard, 2015 edition with Addendum 1[@AHRI551A12015]",
-                "Ratings and design points defined using SI unit version of the standard, 2018 edition[@AHRI5512018]"
+                "Ratings and design points defined using SI unit version of the standard, 2018 edition[@AHRI5512018]",
+                "Ratings and design points defined using SI unit version of the standard, 2020 edition[@AHRI5512020]"
             ]
         },
         "RS0001": {
@@ -143,7 +146,7 @@
                 "rating_source": {
                     "description": "Source of this rating data",
                     "type": "string",
-                    "notes": "Used by data publisher to document methods (e.g. software and version) used to generate rating data"
+                    "notes": "Used by data publisher to document methods (e.g., software and version) used to generate rating data"
                 },
                 "net_refrigerating_capacity": {
                     "description": "Rated net refrigeration capacity",
@@ -246,10 +249,14 @@
                     "units": "h-ft2-F/Btu",
                     "notes": "Condenser fouling factor at which the full load rating condition was measured"
                 },
-                "rating_reproducible_from_performance_data": {
-                    "description": "Whether this rating can be reproduced using the performance data in the representation",
+                "rating_recalculatable_from_performance_data": {
+                    "description": "Whether this rating can be recalculated using the performance data in the representation",
                     "type": "boolean",
-                    "notes": "True if the rating values in this table can be reproduced using the performance data in the representation within the tolerance of the rating standard"
+                    "notes": "True if the rating values in this table can be recalculated using the performance data in the representation within the tolerance of the rating standard"
+                },
+                "rating_recalculatable_explanation": {
+                    "description": "An explanation of the value for `rating_recalculatable_from_performance_data`",
+                    "type": "string"
                 }
             },
             "required": [
@@ -269,7 +276,7 @@
                 "full_load_condenser_liquid_leaving_temperature",
                 "full_load_condenser_liquid_differential_pressure",
                 "full_load_condenser_fouling_factor",
-                "rating_reproducible_from_performance_data"
+                "rating_recalculatable_from_performance_data"
             ],
             "additionalProperties": false
         },
@@ -389,7 +396,7 @@
                 "rating_source": {
                     "description": "Source of this rating data",
                     "type": "string",
-                    "notes": "Used by data publisher to document methods (e.g. software and version) used to generate rating data"
+                    "notes": "Used by data publisher to document methods (e.g., software and version) used to generate rating data"
                 },
                 "net_refrigerating_capacity": {
                     "description": "Rated net refrigeration capacity",
@@ -492,10 +499,14 @@
                     "units": "m2-K/kW",
                     "notes": "Condenser fouling factor at which the full rating was measured"
                 },
-                "rating_reproducible_from_performance_data": {
-                    "description": "Whether this rating can be reproduced using the performance data in the representation",
+                "rating_recalculatable_from_performance_data": {
+                    "description": "Whether this rating can be recalculated using the performance data in the representation",
                     "type": "boolean",
-                    "notes": "True if the rating values in this table can be reproduced using the performance data in the representation within the tolerance of the rating standard"
+                    "notes": "True if the rating values in this table can be recalculated using the performance data in the representation within the tolerance of the rating standard"
+                },
+                "rating_recalculatable_explanation": {
+                    "description": "An explanation of the value for `rating_recalculatable_from_performance_data`",
+                    "type": "string"
                 }
             },
             "required": [
@@ -515,7 +526,7 @@
                 "full_load_condenser_liquid_leaving_temperature",
                 "full_load_condenser_liquid_differential_pressure",
                 "full_load_condenser_fouling_factor",
-                "rating_reproducible_from_performance_data"
+                "rating_recalculatable_from_performance_data"
             ],
             "additionalProperties": false
         },
@@ -662,7 +673,7 @@
                 },
                 "compressor_speed_control_type": {
                     "description": "Type of compressor speed control",
-                    "$ref": "ASHRAE205.schema.json#/definitions/CompressorSpeedControlType"
+                    "$ref": "ASHRAE205.schema.json#/definitions/SpeedControlType"
                 },
                 "maximum_power": {
                     "description": "Maximum input power at which the chiller operates reliably and continuously",
@@ -671,7 +682,7 @@
                     "units": "W"
                 },
                 "cycling_degradation_coefficient": {
-                    "description": "Cycling degradation coefficient (C<sub>D</sub>) as described in AHRI 550/590 or AHRI 551/591",
+                    "description": "Cycling degradation coefficient (C~D~) as described in AHRI 550/590 or AHRI 551/591",
                     "type": "number",
                     "minimum": 0.0,
                     "maximum": 1.0,
@@ -971,6 +982,6 @@
             "additionalProperties": false
         }
     },
-    "version": "0.2.0",
+    "version": "1.0.0",
     "$ref": "RS0001.schema.json#/definitions/RS0001"
 }

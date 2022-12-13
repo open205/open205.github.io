@@ -186,6 +186,6 @@
             "additionalProperties": false
         }
     },
-    "version": "0.2.0",
+    "version": "1.0.0",
     "$ref": "RS0005.schema.json#/definitions/RS0005"
 }
