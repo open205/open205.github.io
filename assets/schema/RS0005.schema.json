@@ -8,7 +8,9 @@
             "properties": {
                 "metadata": {
                     "description": "Metadata data group",
-                    "$ref": "ASHRAE205.schema.json#/definitions/Metadata"
+                    "$ref": "ASHRAE205.schema.json#/definitions/Metadata",
+                    "requiredText": "True",
+                    "constraintsText": "schema=RS0005"
                 },
                 "description": {
                     "description": "Data group describing product and rating information",
@@ -16,7 +18,8 @@
                 },
                 "performance": {
                     "description": "Data group containing performance information",
-                    "$ref": "RS0005.schema.json#/definitions/Performance"
+                    "$ref": "RS0005.schema.json#/definitions/Performance",
+                    "requiredText": "True"
                 }
             },
             "required": [
@@ -51,13 +54,15 @@
                     "description": "Nominal voltage",
                     "type": "number",
                     "minimum": 0.0,
-                    "units": "V"
+                    "units": "V",
+                    "constraintsText": ">=0.0"
                 },
                 "nominal_frequency": {
                     "description": "Nominal frequency",
                     "type": "number",
                     "minimum": 0.0,
-                    "units": "Hz"
+                    "units": "Hz",
+                    "constraintsText": ">=0.0"
                 }
             },
             "additionalProperties": false
@@ -70,23 +75,39 @@
                     "type": "number",
                     "minimum": 0.0,
                     "units": "W",
-                    "notes": "Operational limit set to prevent overheating or overcurrent, not the rated name plate power"
+                    "scalable": true,
+                    "notes": "Operational limit set to prevent overheating or overcurrent, not the rated name plate power",
+                    "requiredText": "True",
+                    "constraintsText": ">=0.0"
                 },
                 "standby_power": {
                     "description": "Power draw when motor is not operating",
                     "type": "number",
                     "minimum": 0.0,
-                    "units": "W"
+                    "units": "W",
+                    "scalable": true,
+                    "requiredText": "True",
+                    "constraintsText": ">=0.0"
                 },
                 "number_of_poles": {
                     "description": "Number of poles",
                     "type": "integer",
                     "exclusiveMinimum": 0,
-                    "multipleOf": 2
+                    "multipleOf": 2,
+                    "requiredText": "True",
+                    "constraintsText": [
+                        ">0",
+                        "%2"
+                    ]
                 },
                 "drive_representation": {
                     "description": "The corresponding Standard 205 drive representation",
                     "$ref": "RS0006.schema.json#/definitions/RS0006"
+                },
+                "scaling": {
+                    "description": "Specifies the range the performance data can be scaled to represent different capacity equipment",
+                    "$ref": "ASHRAE205.schema.json#/definitions/Scaling",
+                    "notes": "If not present, scaling of the performance data is not allowed"
                 },
                 "performance_map": {
                     "description": "Data group describing motor performance when operating",
@@ -109,11 +130,13 @@
             "properties": {
                 "grid_variables": {
                     "description": "Data group describing grid variables for motor performance",
-                    "$ref": "RS0005.schema.json#/definitions/GridVariables"
+                    "$ref": "RS0005.schema.json#/definitions/GridVariables",
+                    "requiredText": "True"
                 },
                 "lookup_variables": {
                     "description": "Data group describing lookup variables for motor performance",
-                    "$ref": "RS0005.schema.json#/definitions/LookupVariables"
+                    "$ref": "RS0005.schema.json#/definitions/LookupVariables",
+                    "requiredText": "True"
                 }
             },
             "required": [
@@ -132,7 +155,10 @@
                     "items": {
                         "type": "number"
                     },
-                    "units": "W"
+                    "units": "W",
+                    "scalable": true,
+                    "requiredText": "True",
+                    "constraintsText": ">=0.0"
                 },
                 "shaft_rotational_speed": {
                     "description": "Rotational speed of shaft",
@@ -141,7 +167,9 @@
                     "items": {
                         "type": "number"
                     },
-                    "units": "rev/s"
+                    "units": "rev/s",
+                    "requiredText": "True",
+                    "constraintsText": ">=0.0"
                 }
             },
             "required": [
@@ -158,34 +186,48 @@
                     "type": "array",
                     "minItems": 1,
                     "items": {
-                        "type": [
-                            "number",
-                            "null"
-                        ]
+                        "type": "number"
                     },
                     "units": "-",
-                    "notes": "Defined as the ratio of mechanical shaft power to electrical input power of the motor"
+                    "notes": "Defined as the ratio of mechanical shaft power to electrical input power of the motor",
+                    "requiredText": "True",
+                    "constraintsText": [
+                        ">=0.0",
+                        "<=1.0"
+                    ]
                 },
                 "power_factor": {
                     "description": "Power factor of the motor",
                     "type": "array",
                     "minItems": 1,
                     "items": {
-                        "type": [
-                            "number",
-                            "null"
-                        ]
+                        "type": "number"
                     },
-                    "units": "-"
+                    "units": "-",
+                    "requiredText": "True",
+                    "constraintsText": [
+                        ">=0.0",
+                        "<=1.0"
+                    ]
+                },
+                "operation_state": {
+                    "description": "The operation state at the operating conditions",
+                    "type": "array",
+                    "items": {
+                        "$ref": "ASHRAE205.schema.json#/definitions/OperationState"
+                    },
+                    "units": "-",
+                    "requiredText": "True"
                 }
             },
             "required": [
                 "efficiency",
-                "power_factor"
+                "power_factor",
+                "operation_state"
             ],
             "additionalProperties": false
         }
     },
-    "version": "1.0.0",
+    "version": "2.0.0",
     "$ref": "RS0005.schema.json#/definitions/RS0005"
 }

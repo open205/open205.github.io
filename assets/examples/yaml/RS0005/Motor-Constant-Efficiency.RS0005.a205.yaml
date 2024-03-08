@@ -1,6 +1,6 @@
 metadata:
   data_model: ASHRAE_205
-  schema_version: 1.0.0
+  schema_version: 2.0.0
   schema: RS0005
   description: Electric Motor with Constant Efficiency
   id: bcf8b859-67a3-42f4-8f8d-4e57af1ccf22
@@ -22,7 +22,7 @@ performance:
   drive_representation:
     metadata:
       data_model: ASHRAE_205
-      schema_version: 1.0.0
+      schema_version: 2.0.0
       schema: RS0006
       description: Electronic Motor Drive with Constant Efficiency
       id: bcf8b859-67a3-42f4-8f8d-4e57af1ccf22
@@ -53,6 +53,11 @@ performance:
           - 0.985
           - 0.985
           - 0.985
+          operation_state:
+          - NORMAL
+          - NORMAL
+          - NORMAL
+          - NORMAL
   performance_map:
     grid_variables:
       shaft_power:
@@ -72,3 +77,8 @@ performance:
       - 0.9
       - 0.9
       - 0.9
+      operation_state:
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL

@@ -146,6 +146,21 @@
                 "Concentration is defined as a fraction of total liquid mixture mass"
             ]
         },
+        "OperationState": {
+            "type": "string",
+            "enum": [
+                "NORMAL",
+                "STANDBY"
+            ],
+            "enum_text": [
+                "Normal",
+                "Standby"
+            ],
+            "descriptions": [
+                "Indicates that the equipment is in normal operating state",
+                "Indicates that the equipment is in standby operating state"
+            ]
+        },
         "Metadata": {
             "type": "object",
             "properties": {
@@ -153,16 +168,20 @@
                     "description": "Data model name",
                     "type": "string",
                     "pattern": "ASHRAE_205",
-                    "notes": "Identifies the data model where the schema is defined"
+                    "notes": "Identifies the data model where the schema is defined",
+                    "requiredText": "True",
+                    "constraintsText": "\"ASHRAE_205\""
                 },
                 "schema": {
                     "description": "Schema name or identifier",
                     "$ref": "ASHRAE205.schema.json#/definitions/SchemaType",
-                    "notes": "Identifies the schema used to define the data content"
+                    "notes": "Identifies the schema used to define the data content",
+                    "requiredText": "True"
                 },
                 "schema_version": {
                     "description": "The version of the schema the data complies with",
-                    "$ref": "ASHRAE205.schema.json#/definitions/Version"
+                    "$ref": "ASHRAE205.schema.json#/definitions/Version",
+                    "requiredText": "True"
                 },
                 "id": {
                     "description": "Unique equipment identifier",
@@ -170,16 +189,19 @@
                     "notes": [
                         "Assigned by data publisher to identify the contained data",
                         "`id` shall remain unchanged for revised data"
-                    ]
+                    ],
+                    "requiredText": "True"
                 },
                 "description": {
                     "description": "Description of data (suitable for display)",
-                    "type": "string"
+                    "type": "string",
+                    "requiredText": "True"
                 },
                 "data_timestamp": {
                     "description": "Date of publication",
                     "$ref": "ASHRAE205.schema.json#/definitions/Timestamp",
-                    "notes": "Date/time of publication of the data"
+                    "notes": "Date/time of publication of the data",
+                    "requiredText": "True"
                 },
                 "data_version": {
                     "description": "Integer version identifier for the data in the representation",
@@ -188,7 +210,9 @@
                     "notes": [
                         "Used by data publisher to track revisions of the data for a specific representation",
                         "`data_version` shall be incremented for each data revision"
-                    ]
+                    ],
+                    "requiredText": "True",
+                    "constraintsText": ">=1"
                 },
                 "data_source": {
                     "description": "Source(s) of the data",
@@ -227,11 +251,13 @@
                     "items": {
                         "$ref": "ASHRAE205.schema.json#/definitions/LiquidComponent"
                     },
-                    "notes": "Array may contain a single component"
+                    "notes": "Array may contain a single component",
+                    "requiredText": "True"
                 },
                 "concentration_type": {
                     "description": "Defines whether concentration is defined on a volume or mass basis",
-                    "$ref": "ASHRAE205.schema.json#/definitions/ConcentrationType"
+                    "$ref": "ASHRAE205.schema.json#/definitions/ConcentrationType",
+                    "requiredText": "True"
                 }
             },
             "required": [
@@ -245,21 +271,54 @@
             "properties": {
                 "liquid_constituent": {
                     "description": "Substance of this component of the mixture",
-                    "$ref": "ASHRAE205.schema.json#/definitions/LiquidConstituent"
+                    "$ref": "ASHRAE205.schema.json#/definitions/LiquidConstituent",
+                    "requiredText": "True"
                 },
                 "concentration": {
                     "description": "Concentration of this component of the mixture",
                     "type": "number",
                     "minimum": 0.0,
                     "maximum": 1.0,
-                    "notes": "If omitted, assume equal distribution with any other component with no defined concentration (e.g., can be left blank for the primary component)"
+                    "notes": "If omitted, assume equal distribution with any other component with no defined concentration (e.g., can be left blank for the primary component)",
+                    "constraintsText": [
+                        ">=0.0",
+                        "<=1.0"
+                    ]
                 }
             },
             "required": [
                 "liquid_constituent"
             ],
             "additionalProperties": false
+        },
+        "Scaling": {
+            "type": "object",
+            "properties": {
+                "minimum": {
+                    "description": "Minimum scaling factor",
+                    "type": "number",
+                    "exclusiveMinimum": 0.0,
+                    "maximum": 1.0,
+                    "units": "-",
+                    "notes": "If not specified, may be scaled down to any value greater than zero",
+                    "constraintsText": [
+                        ">0.0",
+                        "<=1.0"
+                    ]
+                },
+                "maximum": {
+                    "description": "Maximum scaling factor",
+                    "type": "number",
+                    "minimum": 1.0,
+                    "units": "-",
+                    "notes": "If not specified, unlimited",
+                    "constraintsText": [
+                        ">=1.0"
+                    ]
+                }
+            },
+            "additionalProperties": false
         }
     },
-    "version": "1.0.0"
+    "version": "2.0.0"
 }

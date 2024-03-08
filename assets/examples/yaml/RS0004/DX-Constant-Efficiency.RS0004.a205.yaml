@@ -1,5 +1,5 @@
 metadata:
-  schema_version: 1.0.0
+  schema_version: 2.0.0
   data_model: ASHRAE_205
   schema: RS0004
   description: DX System with Constant Efficiency
@@ -235,6 +235,71 @@ performance:
       - 12700.297419354836
       - 21496.062903225804
       - 21496.062903225804
+      operation_state:
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
+      - NORMAL
   performance_map_standby:
     grid_variables:
       outdoor_coil_environment_dry_bulb_temperature:

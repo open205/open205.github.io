@@ -31,9 +31,9 @@
                 "2023"
             ],
             "descriptions": [
-                "Rating is based on 2008 AHRI standard[@AHRI2102008]",
-                "Rating is based on 2017 AHRI standard[@AHRI2102017]",
-                "Rating is based on 2023 AHRI standard[@AHRI2102023]"
+                "Ratings defined using IP unit version of the standard, 2008 edition.[@AHRI2102008]",
+                "Ratings defined using IP unit version of the standard, 2017 edition.[@AHRI2102017]",
+                "Ratings defined using IP unit version of the standard, 2023 edition.[@AHRI2102023]"
             ]
         },
         "AHRI210240CompressorStagingType": {
@@ -59,17 +59,20 @@
             "enum": [
                 "IP_2007",
                 "IP_2015",
-                "IP_2019"
+                "IP_2019",
+                "IP_2022"
             ],
             "enum_text": [
                 "2007",
                 "2015",
-                "2019"
+                "2019",
+                "2022"
             ],
             "descriptions": [
-                "Rating is based on 2007 AHRI standard[@AHRI3402007]",
-                "Rating is based on 2015 AHRI standard[@AHRI3402015]",
-                "Rating is based on 2019 AHRI standard[@AHRI3402019]"
+                "Ratings defined using IP unit version of the standard, 2007 edition.[@AHRI3402007]",
+                "Ratings defined using IP unit version of the standard, 2015 edition.[@AHRI3402015]",
+                "Ratings defined using IP unit version of the standard, 2019 edition.[@AHRI3402019]",
+                "Ratings defined using IP unit version of the standard, 2022 edition.[@AHRI3402022]"
             ]
         },
         "AHRI340360CapacityControlType": {
@@ -95,7 +98,9 @@
             "properties": {
                 "metadata": {
                     "description": "Metadata data group",
-                    "$ref": "ASHRAE205.schema.json#/definitions/Metadata"
+                    "$ref": "ASHRAE205.schema.json#/definitions/Metadata",
+                    "requiredText": "True",
+                    "constraintsText": "schema=RS0002"
                 },
                 "description": {
                     "description": "Data group describing product and rating information",
@@ -103,7 +108,8 @@
                 },
                 "performance": {
                     "description": "Data group containing performance information",
-                    "$ref": "RS0002.schema.json#/definitions/Performance"
+                    "$ref": "RS0002.schema.json#/definitions/Performance",
+                    "requiredText": "True"
                 }
             },
             "required": [
@@ -170,189 +176,42 @@
                     "type": "number",
                     "exclusiveMinimum": 0.0,
                     "units": "Btu/W-h",
-                    "notes": "Represents SEER2 for the 2023 version of test standard"
+                    "notes": "Used for versions of the test standard up through 2017",
+                    "constraintsText": ">0.0"
                 },
-                "eer_a_full": {
+                "seer2": {
+                    "description": "Seasonal Energy Efficiency Ratio",
+                    "type": "number",
+                    "exclusiveMinimum": 0.0,
+                    "units": "Btu/W-h",
+                    "notes": "Used for versions of the test standard from 2023",
+                    "constraintsText": ">0.0"
+                },
+                "eer": {
                     "description": "Full stage Energy Efficiency Ratio (at 'A' operating conditions)",
                     "type": "number",
                     "exclusiveMinimum": 0.0,
                     "units": "Btu/W-h",
-                    "notes": "Represents EER2~A_Full~ for the 2023 version of test standard"
+                    "notes": "Used for versions of the test standard up through 2017",
+                    "constraintsText": ">0.0"
                 },
-                "eer_b_full": {
-                    "description": "Full stage Energy Efficiency Ratio (at 'B' operating conditions)",
+                "eer2": {
+                    "description": "Full stage Energy Efficiency Ratio (at 'A' operating conditions)",
                     "type": "number",
                     "exclusiveMinimum": 0.0,
-                    "units": "Btu/W-h"
+                    "units": "Btu/W-h",
+                    "notes": "Used for versions of the test standard from 2023",
+                    "constraintsText": ">0.0"
                 },
-                "cooling_a_full_capacity": {
+                "cooling_capacity": {
                     "description": "Full stage net total cooling capacity (at 'A' operating conditions)",
                     "type": "number",
                     "minimum": 0.0,
-                    "units": "Btu/h"
-                },
-                "cooling_b_full_capacity": {
-                    "description": "Full stage net total cooling capacity (at 'B' operating conditions)",
-                    "type": "number",
-                    "minimum": 0.0,
-                    "units": "Btu/h"
-                },
-                "cooling_b_low_capacity": {
-                    "description": "Low stage net total cooling capacity (at 'B' operating conditions)",
-                    "type": "number",
-                    "minimum": 0.0,
-                    "units": "Btu/h"
-                },
-                "cooling_f_low_capacity": {
-                    "description": "Low stage net total cooling capacity (at 'F' operating conditions)",
-                    "type": "number",
-                    "minimum": 0.0,
-                    "units": "Btu/h"
-                },
-                "cooling_g_low_capacity": {
-                    "description": "Low stage net total cooling capacity (at 'G' operating conditions)",
-                    "type": "number",
-                    "minimum": 0.0,
-                    "units": "Btu/h"
-                },
-                "cooling_i_low_capacity": {
-                    "description": "Low stage net total cooling capacity (at 'I' operating conditions)",
-                    "type": "number",
-                    "minimum": 0.0,
-                    "units": "Btu/h"
-                },
-                "cooling_a_full_power": {
-                    "description": "Full stage net total cooling power (at 'A' operating conditions)",
-                    "type": "number",
-                    "minimum": 0.0,
-                    "units": "W"
-                },
-                "cooling_b_full_power": {
-                    "description": "Full stage net total cooling power (at 'B' operating conditions)",
-                    "type": "number",
-                    "minimum": 0.0,
-                    "units": "W"
-                },
-                "cooling_b_low_power": {
-                    "description": "Low stage net total cooling power (at 'B' operating conditions)",
-                    "type": "number",
-                    "minimum": 0.0,
-                    "units": "W"
-                },
-                "cooling_f_low_power": {
-                    "description": "Low stage net total cooling power (at 'F' operating conditions)",
-                    "type": "number",
-                    "minimum": 0.0,
-                    "units": "W"
-                },
-                "cooling_g_low_power": {
-                    "description": "Low stage net total cooling power (at 'G' operating conditions)",
-                    "type": "number",
-                    "minimum": 0.0,
-                    "units": "W"
-                },
-                "cooling_i_low_power": {
-                    "description": "Low stage net total cooling power (at 'I' operating conditions)",
-                    "type": "number",
-                    "minimum": 0.0,
-                    "units": "W"
-                },
-                "cooling_full_fan_power": {
-                    "description": "Power of the indoor fan at full load",
-                    "type": "number",
-                    "exclusiveMinimum": 0.0,
-                    "units": "W"
-                },
-                "cooling_full_air_volumetric_flow_rate": {
-                    "description": "Standard air volumetric rate of the indoor fan at full load",
-                    "type": "number",
-                    "exclusiveMinimum": 0.0,
-                    "units": "cfm"
-                },
-                "cooling_low_fan_power": {
-                    "description": "Power of the indoor fan at low stage",
-                    "type": "number",
-                    "exclusiveMinimum": 0.0,
-                    "units": "W"
-                },
-                "cooling_low_air_volumetric_flow_rate": {
-                    "description": "Standard air volumetric rate of the indoor fan at low stage",
-                    "type": "number",
-                    "exclusiveMinimum": 0.0,
-                    "units": "cfm"
-                },
-                "rating_recalculatable_from_performance_data": {
-                    "description": "Whether this rating can be recalculated using the performance data in the representation",
-                    "type": "boolean",
-                    "notes": "True if the rating values in this table can be recalculated using the performance data in the representation within the tolerance of the rating standard"
-                },
-                "rating_recalculatable_explanation": {
-                    "description": "An explanation of the value for `rating_recalculatable_from_performance_data`",
-                    "type": "string"
+                    "units": "Btu/h",
+                    "notes": "At high stage for multi-stage equipment",
+                    "constraintsText": ">=0.0"
                 }
             },
-            "allOf": [
-                {
-                    "if": {
-                        "properties": {
-                            "allOf": {
-                                "staging_type": {
-                                    "not": {
-                                        "const": "SINGLE_STAGE"
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "eer_b_full",
-                            "cooling_b_full_capacity",
-                            "cooling_b_low_capacity",
-                            "cooling_f_low_capacity",
-                            "cooling_a_full_power",
-                            "cooling_b_full_power",
-                            "cooling_b_low_power",
-                            "cooling_f_low_power",
-                            "cooling_low_fan_power",
-                            "cooling_low_air_volumetric_flow_rate"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "allOf": {
-                                "staging_type": {
-                                    "const": "VARIABLE_STAGE"
-                                },
-                                "test_standard_year": {
-                                    "const": "IP_2023"
-                                }
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "cooling_g_low_capacity",
-                            "cooling_i_low_capacity",
-                            "cooling_g_low_power",
-                            "cooling_i_low_power"
-                        ]
-                    }
-                }
-            ],
-            "required": [
-                "certified_reference_number",
-                "test_standard_year",
-                "staging_type",
-                "seer",
-                "eer_a_full",
-                "cooling_a_full_capacity",
-                "cooling_full_fan_power",
-                "cooling_full_air_volumetric_flow_rate",
-                "rating_recalculatable_from_performance_data"
-            ],
             "additionalProperties": false
         },
         "RatingAHRI340360": {
@@ -379,90 +238,24 @@
                     "description": "Integrated Energy Efficiency Ratio",
                     "type": "number",
                     "exclusiveMinimum": 0.0,
-                    "units": "Btu/W-h"
+                    "units": "Btu/W-h",
+                    "constraintsText": ">0.0"
                 },
                 "eer": {
                     "description": "Energy Efficiency Ratio at Standard Rating Conditions",
                     "type": "number",
                     "exclusiveMinimum": 0.0,
-                    "units": "Btu/W-h"
+                    "units": "Btu/W-h",
+                    "constraintsText": ">0.0"
                 },
                 "cooling_capacity": {
                     "description": "Net total cooling capacity at Standard Rating Conditions",
                     "type": "number",
                     "minimum": 0.0,
-                    "units": "Btu/h"
-                },
-                "part_load_points": {
-                    "description": "Four part load rating points",
-                    "type": "array",
-                    "minItems": 4,
-                    "maxItems": 4,
-                    "items": {
-                        "$ref": "RS0002.schema.json#/definitions/RatingAHRI340360CoolingPartLoadPoint"
-                    }
-                },
-                "rating_recalculatable_from_performance_data": {
-                    "description": "Whether this rating can be recalculated using the performance data in the representation",
-                    "type": "boolean",
-                    "notes": "True if the rating values in this table can be recalculated using the performance data in the representation within the tolerance of the rating standard"
-                },
-                "rating_recalculatable_explanation": {
-                    "description": "An explanation of the value for `rating_recalculatable_from_performance_data`",
-                    "type": "string"
+                    "units": "Btu/h",
+                    "constraintsText": ">=0.0"
                 }
             },
-            "required": [
-                "certified_reference_number",
-                "test_standard_year",
-                "capacity_control_type",
-                "ieer",
-                "eer",
-                "cooling_capacity",
-                "rating_recalculatable_from_performance_data"
-            ],
-            "additionalProperties": false
-        },
-        "RatingAHRI340360CoolingPartLoadPoint": {
-            "type": "object",
-            "properties": {
-                "capacity": {
-                    "description": "Net total cooling capacity",
-                    "type": "number",
-                    "minimum": 0.0,
-                    "units": "Btu/h"
-                },
-                "net_power": {
-                    "description": "Net cooling power (including the indoor fan motor, controls, and other auxiliary loads)",
-                    "type": "number",
-                    "minimum": 0.0,
-                    "units": "W"
-                },
-                "indoor_fan_power": {
-                    "description": "Power of the indoor fan motor",
-                    "type": "number",
-                    "exclusiveMinimum": 0.0,
-                    "units": "W"
-                },
-                "auxiliary_power": {
-                    "description": "Power of the control circuit and any other auxiliary loads",
-                    "type": "number",
-                    "exclusiveMinimum": 0.0,
-                    "units": "W"
-                },
-                "air_volumetric_flow_rate": {
-                    "description": "Standard air volumetric rate of the indoor fan",
-                    "type": "number",
-                    "exclusiveMinimum": 0.0,
-                    "units": "cfm"
-                }
-            },
-            "required": [
-                "capacity",
-                "net_power",
-                "auxiliary_power",
-                "air_volumetric_flow_rate"
-            ],
             "additionalProperties": false
         },
         "Performance": {
@@ -473,7 +266,10 @@
                     "type": "number",
                     "minimum": 0.0,
                     "units": "W",
-                    "notes": "Includes on-board controls and other power not included in the fan or dx system representations"
+                    "scalable": true,
+                    "notes": "Includes on-board controls and other power not included in the fan or dx system representations",
+                    "requiredText": "True",
+                    "constraintsText": ">=0.0"
                 },
                 "indoor_fan_representation": {
                     "description": "The corresponding Standard 205 fan assembly representation",
@@ -482,15 +278,23 @@
                 },
                 "fan_position": {
                     "description": "Position of the fan relative to the cooling coil",
-                    "$ref": "RS0002.schema.json#/definitions/FanPosition"
+                    "$ref": "RS0002.schema.json#/definitions/FanPosition",
+                    "requiredText": "if indoor_fan_representation"
                 },
                 "dx_system_representation": {
                     "description": "The corresponding Standard 205 direct expansion system representation",
-                    "$ref": "RS0004.schema.json#/definitions/RS0004"
+                    "$ref": "RS0004.schema.json#/definitions/RS0004",
+                    "requiredText": "True"
+                },
+                "scaling": {
+                    "description": "Specifies the range the performance data can be scaled to represent different capacity equipment",
+                    "$ref": "ASHRAE205.schema.json#/definitions/Scaling",
+                    "notes": "If not present, scaling of the performance data is not allowed"
                 }
             },
             "required": [
-                "standby_power"
+                "standby_power",
+                "dx_system_representation"
             ],
             "dependencies": {
                 "indoor_fan_representation": [
@@ -500,6 +304,6 @@
             "additionalProperties": false
         }
     },
-    "version": "1.0.0",
+    "version": "2.0.0",
     "$ref": "RS0002.schema.json#/definitions/RS0002"
 }

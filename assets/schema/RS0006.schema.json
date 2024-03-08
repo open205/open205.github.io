@@ -37,7 +37,9 @@
             "properties": {
                 "metadata": {
                     "description": "Metadata data group",
-                    "$ref": "ASHRAE205.schema.json#/definitions/Metadata"
+                    "$ref": "ASHRAE205.schema.json#/definitions/Metadata",
+                    "requiredText": "True",
+                    "constraintsText": "schema=RS0006"
                 },
                 "description": {
                     "description": "Data group describing product and rating information",
@@ -45,7 +47,8 @@
                 },
                 "performance": {
                     "description": "Data group containing performance information",
-                    "$ref": "RS0006.schema.json#/definitions/Performance"
+                    "$ref": "RS0006.schema.json#/definitions/Performance",
+                    "requiredText": "True"
                 }
             },
             "required": [
@@ -86,21 +89,34 @@
                     "description": "Maximum power draw of the drive",
                     "type": "number",
                     "minimum": 0.0,
-                    "units": "W"
+                    "units": "W",
+                    "scalable": true,
+                    "requiredText": "True",
+                    "constraintsText": ">=0.0"
                 },
                 "standby_power": {
                     "description": "Power draw when the motor is not operating",
                     "type": "number",
                     "minimum": 0.0,
-                    "units": "W"
+                    "units": "W",
+                    "scalable": true,
+                    "requiredText": "True",
+                    "constraintsText": ">=0.0"
                 },
                 "cooling_method": {
                     "description": "Method used to cool the drive",
-                    "$ref": "RS0006.schema.json#/definitions/CoolingMethod"
+                    "$ref": "RS0006.schema.json#/definitions/CoolingMethod",
+                    "requiredText": "True"
+                },
+                "scaling": {
+                    "description": "Specifies the range the performance data can be scaled to represent different capacity equipment",
+                    "$ref": "ASHRAE205.schema.json#/definitions/Scaling",
+                    "notes": "If not present, scaling of the performance data is not allowed"
                 },
                 "performance_map": {
                     "description": "Data group describing drive performance when operating",
-                    "$ref": "RS0006.schema.json#/definitions/PerformanceMap"
+                    "$ref": "RS0006.schema.json#/definitions/PerformanceMap",
+                    "requiredText": "True"
                 }
             },
             "required": [
@@ -116,11 +132,13 @@
             "properties": {
                 "grid_variables": {
                     "description": "Data group describing grid variables for drive performance",
-                    "$ref": "RS0006.schema.json#/definitions/GridVariables"
+                    "$ref": "RS0006.schema.json#/definitions/GridVariables",
+                    "requiredText": "True"
                 },
                 "lookup_variables": {
                     "description": "Data group describing lookup variables for drive performance",
-                    "$ref": "RS0006.schema.json#/definitions/LookupVariables"
+                    "$ref": "RS0006.schema.json#/definitions/LookupVariables",
+                    "requiredText": "True"
                 }
             },
             "required": [
@@ -139,7 +157,10 @@
                     "items": {
                         "type": "number"
                     },
-                    "units": "W"
+                    "units": "W",
+                    "scalable": true,
+                    "requiredText": "True",
+                    "constraintsText": ">=0.0"
                 },
                 "output_frequency": {
                     "description": "Frequency delivered to the motor",
@@ -148,7 +169,9 @@
                     "items": {
                         "type": "number"
                     },
-                    "units": "Hz"
+                    "units": "Hz",
+                    "requiredText": "True",
+                    "constraintsText": ">=0.0"
                 }
             },
             "required": [
@@ -165,24 +188,36 @@
                     "type": "array",
                     "minItems": 1,
                     "items": {
-                        "type": [
-                            "number",
-                            "null"
-                        ]
+                        "type": "number"
                     },
                     "units": "-",
                     "notes": [
                         "Defined as the ratio of electrical output power (to the motor) to electrical input power (to the drive)",
                         "Input power shall include any power required to provide active air cooling for the drive"
+                    ],
+                    "requiredText": "True",
+                    "constraintsText": [
+                        ">=0.0",
+                        "<=1.0"
                     ]
+                },
+                "operation_state": {
+                    "description": "The operation state at the operating conditions",
+                    "type": "array",
+                    "items": {
+                        "$ref": "ASHRAE205.schema.json#/definitions/OperationState"
+                    },
+                    "units": "-",
+                    "requiredText": "True"
                 }
             },
             "required": [
-                "efficiency"
+                "efficiency",
+                "operation_state"
             ],
             "additionalProperties": false
         }
     },
-    "version": "1.0.0",
+    "version": "2.0.0",
     "$ref": "RS0006.schema.json#/definitions/RS0006"
 }
